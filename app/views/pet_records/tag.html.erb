@@ -1,0 +1,36 @@
+<table>
+
+	<% @tag_pet_records.each do |tag| %>
+		<% if(tag.pet_record.user.user_status == "公開")&&(tag.pet_record.record_public == true)%>
+			<tr>
+				<td><%= attachment_image_tag tag.pet_record.user, :profile_image, size: "30x30" %></td>
+				<td>
+					<%= link_to(user_path(tag.pet_record.user)) do %>
+						<%= tag.pet_record.user.name %>
+					<% end %>
+				</td>
+				<td><%= tag.pet_record.user.pet_name %></td>
+				<td><%= tag.pet_record.user.intoroduction %></td>
+				<td><%= truncate(tag.pet_record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %></td>
+				<td>
+					<%=  link_to(pet_record_path(tag.pet_record_id)) do %>
+					#<%= tag.tag.tag %>
+					<% end %>
+				</td>
+
+
+				<td>
+		        	<% if current_user.id != tag.pet_record.user.id %>
+		            	<% if tag.pet_record.user.followed_by?(current_user) %>
+		                	<p><%=link_to "フォロー済み", user_user_relationships_path(tag.pet_record.user.id), method: :delete %></p>
+		            	<% else %>
+		                	<p><%=link_to "フォローする", user_user_relationships_path(tag.pet_record.user.id), method: :post %></p>
+		            	<% end %>
+					<% end %>
+	    		</td>
+			</tr>
+		<% end %> <!-- if 公開 -->
+	<% end %> <!-- tags.each -->
+</table>
+
+

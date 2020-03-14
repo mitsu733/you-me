@@ -1,0 +1,62 @@
+<div class="">
+    <table>
+    	<tr>
+    		<td><h3><%= @pet_record.user.name %><%= @pet_record.user.pet_name %></h3></td>
+    	</tr>
+    	<tr>
+        	<td><%= l(@pet_record.created_at) %></td>
+        </tr>
+        <tr>
+        	<td>
+        		トイレ<%= @pet_record.toilet %>
+        		お水<%= @pet_record.water %>
+        		ごはん<%= @pet_record.food %>
+        		元気<%= @pet_record.energy %>
+        	</td>
+        </tr>
+        <tr>
+          <td><%= attachment_image_tag @pet_record, :record_image, size: "100x100" %></td>
+        </tr>
+        <tr>
+        <td id="likes_buttons_<%= @pet_record.id %>">
+            <%= render 'likes/like', pet_record: @pet_record %>
+        </td>
+        </tr>
+        <tr>
+            <td>
+                <% if current_user != @pet_record.user %>
+                    <% if @pet_record.user.followed_by?(current_user) %>
+                        <p><%=link_to "フォロー済み", user_user_relationships_path(@pet_record.user.id), method: :delete %></p>
+                    <% else %>
+                        <p><%=link_to "フォローする", user_user_relationships_path(@pet_record.user.id), method: :post %></p>
+                    <% end %>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td><%= @pet_record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %></td>
+        </tr>
+        
+        <!-- タグ機能 -->
+          <tr>
+            <td>
+              <% if @pet_record.tags.any? %>
+                <% @pet_record.tags.each do |tag| %>
+                  <%= link_to tag_path(tag_id: tag.id) do %>
+                    #<%= tag.tag %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+
+        <tr>
+            <td>
+        	    <% if(@pet_record.user_id == current_user.id)%>
+            	    <%= link_to "変更", edit_pet_record_path(@pet_record) %>
+            	    <%= link_to "削除", @pet_record, method: :delete %>
+            	<%end%>
+    		</td>
+    	</tr>
+    </table>
+</div>

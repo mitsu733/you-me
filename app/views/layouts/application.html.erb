@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YOU □ ME</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://kit.fontawesome.com/1eca3cbf72.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        YOU □ ME
+      </h1>
+      <nav>
+
+        <!-- ユーザーログイン済 ヘッダー　-->
+        <% if user_signed_in? %>
+          <%= I18n.l(Date.today) %>
+          <ul>
+            <li><%= link_to_unless_current  "フォロー",followed_user_path(current_user) %></li>
+            <li><%= link_to_unless_current  "フォロワー",follower_user_path(current_user) %></li>
+            <li><%= link_to_unless_current  "いいね", likes_path %></li>
+            <li><%= link_to_unless_current  "新しい記録",new_pet_record_path %></li>
+             <li><%= link_to_unless_current  "ホーム",  user_path(current_user) %></li>
+            <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
+          </ul>
+          <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
+
+          <!-- 検索機能 -->
+            <%= search_form_for @search, url:search_path do |search| %>
+            <%= search.label :word, "検索" %>
+            <%= search.search_field :user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any %>
+            <div class="actions">
+              <%= search.submit "検索" %>
+            </div>
+        <% end %>
+
+        <!-- ユーザーログイン未 ヘッダー　-->
+        <% else %>
+          <%= I18n.l(Date.today) %>
+          <ul>
+            <li><%= link_to_unless_current  "ログイン", new_user_session_path%></li>
+            <%= link_to "サインイン", new_user_registration_path %>
+          </ul>
+          <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
+        <% end %>
+      </nav>
+    </header>
+
+    <div class="container">
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

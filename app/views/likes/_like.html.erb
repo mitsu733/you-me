@@ -1,0 +1,11 @@
+<% if pet_record.liked_by?(current_user) %>
+	<%= link_to pet_record_likes_path(pet_record), method: :delete, remote: true do %>
+		<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: orangered;"></i>
+    	<%= pet_record.likes.count %>
+	<% end %>
+<% else %>
+	<%= link_to pet_record_likes_path(pet_record), method: :post, remote: true do %>
+		<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: gray;"></i>
+		<%= pet_record.likes.count %>
+	<% end %>
+<% end %>

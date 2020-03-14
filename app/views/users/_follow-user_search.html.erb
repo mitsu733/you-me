@@ -1,0 +1,33 @@
+<% users.each do |user| %>
+	<% if user.user_status == "公開" %>
+	  	<%= link_to(user_path(user)) do %>
+		    <table>
+		        <tr>
+			        <td>
+			            <%= user.name %>
+			            <%= user.pet_name %>
+			        </td>
+		        </tr>
+		        <tr>
+		        	<td>
+		            	<%= user.intoroduction %>
+		        	</td>
+		        </tr>
+		        <tr>
+		        	<td><%= attachment_image_tag user, :profile_image, size: "100x100" %></td>
+		        </tr>
+		        <tr>
+		        	<td>
+			        	<% if current_user.id != user.id %>
+				            <% if user.followed_by?(current_user) %>
+				                <p><%=link_to "フォロー済み", user_user_relationships_path(user.id), method: :delete %></p>
+				            <% else %>
+				                <p><%=link_to "フォローする", user_user_relationships_path(user.id), method: :post %></p>
+				            <% end %>
+				        <% end %>
+		        	</td>
+		        </tr>
+		    </table>
+		<% end %>
+	<% end %>
+<% end %>

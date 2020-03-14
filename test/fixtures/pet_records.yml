@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  toilet: 1
+  water: 1
+  food: 1
+  energy: 1
+  record_image_id: MyString
+  body: MyText
+  record_public: false
+
+two:
+  toilet: 1
+  water: 1
+  food: 1
+  energy: 1
+  record_image_id: MyString
+  body: MyText
+  record_public: false

@@ -1,0 +1,53 @@
+<%= form_with(model: pet_record, local: true) do |f| %>
+	<div class="status">
+	  	トイレ
+		  <%= f.radio_button :toilet, "×" %>
+		  <%= f.label(:toilet, "×") %>
+		  <%= f.radio_button :toilet, "△" %>
+		  <%= f.label(:toilet, "△") %>
+		  <%= f.radio_button :toilet, "○" %>
+		  <%= f.label(:toilet, "○") %>
+	</div>
+	<div class="status">
+	  	お水
+		  <%= f.radio_button :water, "×" %>
+		  <%= f.label(:water, "×") %>
+		  <%= f.radio_button :water, "△" %>
+		  <%= f.label(:water, "△") %>
+		  <%= f.radio_button :water, "○" %>
+		  <%= f.label(:water, "○") %>
+	</div>
+	<div class="status">
+	  	ごはん
+		  <%= f.radio_button :food, "×" %>
+		  <%= f.label(:food, "×") %>
+		  <%= f.radio_button :food, "△" %>
+		  <%= f.label(:food, "△") %>
+		  <%= f.radio_button :food, "○" %>
+		  <%= f.label(:food, "○") %>
+	</div>
+	<div class="status">
+	  	元気
+		  <%= f.radio_button :energy, "×" %>
+		  <%= f.label(:energy, "×") %>
+		  <%= f.radio_button :energy, "△" %>
+		  <%= f.label(:energy, "△") %>
+		  <%= f.radio_button :energy, "○" %>
+		  <%= f.label(:energy, "○") %>
+	</div>
+	<div class="status">
+		  <%= f.attachment_field :record_image %>
+		  <%= f.text_area :body %>
+	</div>
+	<div class="status">
+	  	<% if current_user.user_status == "非公開" %>
+	  	  <%= "非公開"%>
+		<% else %>
+	  	  <%= f.radio_button :record_public, :true %>
+		  <%= f.label(:record_public, :公開) %>
+		  <%= f.radio_button :record_public, :false %>
+		  <%= f.label(:record_public, :非公開) %>
+		<% end %>
+	</div>
+		  <%= f.submit %>
+<% end %>

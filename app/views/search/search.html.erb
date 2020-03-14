@@ -1,0 +1,41 @@
+<table>
+	<tr>
+		<th></th>
+		<!-- ソート機能 -->
+		<th><%= sort_link(@search, :user_name, "名前") %></th>
+		<th><%= sort_link(@search, :user_pet_name, "ペットの名前") %></th>
+		<th><%= sort_link(@search, :user_intoroduction, "自己紹介") %></th>
+		<th><%= sort_link(@search, :body, "記録") %></th>
+	</tr>
+	<!-- 検索結果 -->
+	<% @words.each do |word| %>
+		<% if(word.user.user_status == "公開")&&(word.record_public == true)%>
+			<tr>
+				<td><%= attachment_image_tag word.user, :profile_image, size: "30x30" %></td>
+				<td>
+					<%= link_to(user_path(word.user)) do %>
+						<%= word.user.name %>
+					<% end %>
+				</td>
+				<td><%= word.user.pet_name %></td>
+				<td><%= word.user.intoroduction %></td>
+				<td>
+					<%=  link_to(pet_record_path(word)) do %>
+					<%= word.body %>
+					<% end %>
+				</td>
+				<td>
+		        	<% if current_user.id != word.user.id %>
+		            	<% if word.user.followed_by?(current_user) %>
+		                	<p><%=link_to "フォロー済み", user_user_relationships_path(word.user.id), method: :delete %></p>
+		            	<% else %>
+		                	<p><%=link_to "フォローする", user_user_relationships_path(word.user.id), method: :post %></p>
+		            	<% end %>
+					<% end %>
+	    		</td>
+			</tr>
+		<% end %> <!-- if 公開 -->
+	<% end %> <!-- words.each -->
+</table>
+
+
