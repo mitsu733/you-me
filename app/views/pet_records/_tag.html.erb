@@ -1,0 +1,10 @@
+<!-- タグ機能 -->
+<% if record.tags.any? %>
+  <span class="record-tag-index">
+    <% record.tags.each do |tag| %>
+      <%= link_to tag_path(tag_id: tag.id) do %>
+        <h4>#<%= tag.tag %></h4>
+      <% end %>
+    <% end %>
+  </span>
+<% end %>

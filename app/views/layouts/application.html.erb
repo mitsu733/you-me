@@ -12,13 +12,12 @@
 
   <body>
     <header>
-      <h1>
-        YOU □ ME
-      </h1>
-      <nav>
-
-        <!-- ユーザーログイン済 ヘッダー　-->
-        <% if user_signed_in? %>
+      <% if user_signed_in? %>
+        <h1>
+          YOU □ ME
+        </h1>
+        <nav>
+        <!-- ユーザーログイン済の時のみヘッダー表示　-->
           <%= I18n.l(Date.today) %>
           <ul>
             <li><%= link_to_unless_current  "フォロー",followed_user_path(current_user) %></li>
@@ -31,24 +30,15 @@
           <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
 
           <!-- 検索機能 -->
-            <%= search_form_for @search, url:search_path do |search| %>
+          <%= search_form_for @search, url:search_path do |search| %>
             <%= search.label :word, "検索" %>
             <%= search.search_field :user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any %>
             <div class="actions">
               <%= search.submit "検索" %>
             </div>
-        <% end %>
-
-        <!-- ユーザーログイン未 ヘッダー　-->
-        <% else %>
-          <%= I18n.l(Date.today) %>
-          <ul>
-            <li><%= link_to_unless_current  "ログイン", new_user_session_path%></li>
-            <%= link_to "サインイン", new_user_registration_path %>
-          </ul>
-          <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
-        <% end %>
-      </nav>
+          <% end %>
+        </nav>
+      <% end %>
     </header>
 
     <div class="container">

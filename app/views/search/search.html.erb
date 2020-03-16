@@ -1,4 +1,4 @@
-<table>
+<table class="search-table">
 	<tr>
 		<th></th>
 		<!-- ソート機能 -->
@@ -24,15 +24,11 @@
 					<%= word.body %>
 					<% end %>
 				</td>
-				<td>
-		        	<% if current_user.id != word.user.id %>
-		            	<% if word.user.followed_by?(current_user) %>
-		                	<p><%=link_to "フォロー済み", user_user_relationships_path(word.user.id), method: :delete %></p>
-		            	<% else %>
-		                	<p><%=link_to "フォローする", user_user_relationships_path(word.user.id), method: :post %></p>
-		            	<% end %>
-					<% end %>
-	    		</td>
+				 <!-- フォロー機能 -->
+	            <td>
+	                <%= render 'users/follow', user: word.user %>
+	            </td>
+
 			</tr>
 		<% end %> <!-- if 公開 -->
 	<% end %> <!-- words.each -->

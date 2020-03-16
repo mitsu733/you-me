@@ -1,1 +1,3 @@
-<%= render "pet_records/index", pet_records: @like_pet_records %>
+<% @like_pet_records.each do |record| %>
+	<%= render 'likes/like-tag', record: record %>
+<% end %>

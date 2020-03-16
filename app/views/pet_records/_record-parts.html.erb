@@ -1,0 +1,34 @@
+<div class="record-box-item">
+  <%= link_to(pet_record_path(record)) do %>
+    <div class="record_image">
+      <%= attachment_image_tag record, :record_image, size: "100x100%" %>
+    </div>
+      <div class="date">
+    <td><%= l(record.created_at.to_date) %></td>
+  </div>
+    <div class="user-name">
+  <%= link_to_unless_current record.user.name, user_path(record.user.id) %> / 
+    <%= record.user.pet_name %>
+  </div>
+    <div class="record-body">
+      <%= truncate(record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
+    </div>
+  <% end %><!-- linkのend -->
+
+  <!-- タグ機能 -->
+  <div class="tag">
+  <%= render "pet_records/tag", record: record %>
+  <!-- いいね機能 -->
+  <span id="likes_buttons_<%= record.id %>">
+    <%= render 'likes/like', pet_record: record %>
+ </span>
+</div>
+    <div class="pet-stasus">
+      トイレ<%= record.toilet %>
+      お水<%= record.water %>
+      ごはん<%= record.food %>
+      元気<%= record.energy %>
+    </div>
+
+
+</div>

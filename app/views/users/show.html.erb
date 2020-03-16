@@ -1,1 +1,62 @@
-<%= render 'main', {user: @user, pet_records: @pet_records} %>
+<div class="row">
+	<table>
+		<tr>
+			<td><h3><%= @user.name %><%= @user.pet_name %></h3></td>
+		</tr>
+		<tr>
+			<td><%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100" %></td>
+		</tr>
+		<tr>
+			<td>
+				<%= @user.intoroduction %>
+			</td>
+		</tr>
+		<tr>
+			<%if @user.id == current_user.id %>
+				<td>
+					<%= link_to '編集する',edit_user_path %>
+				</td>
+			<% end %>
+		</tr>
+		<tr>
+			<td>
+				フォロワー：<%= @user.followers.count %>
+				フォロー：<%= @user.followeds.count %>
+				<%= render 'users/follow', user: @user %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<% if @user.user_status == "非公開" %>
+				<%= "非公開" %>
+			<% end %>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<!-- 記録一覧部分 -->
+<div class="row">
+	<div class="col-lg-8">
+		<div class="record-box">
+			<% @pet_records.each do |record| %>
+				<%= render "pet_records/record-parts", record: record %>
+			<% end %>
+		</div>
+	</div>
+
+
+	<div class="col-lg-4">
+		<% @pet_records.each do |record| %>
+					<!-- if record.created_at. -->
+					<%#= l(record.created_at.to_date, format: :short).to_i %>
+			<%= link_to(pet_record_path(record)) do %>
+				<table>
+					<tr>
+						<td><%= l(record.created_at.to_date) %></td>
+					</tr>
+				</table>
+			<% end %>
+		<% end %>
+	</div>
+</div>

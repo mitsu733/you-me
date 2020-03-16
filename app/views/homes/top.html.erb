@@ -4,7 +4,8 @@
 	<%= link_to "アバウト『YOU □ ME』", about_user_path %>
 </div>
 
-<div class="enter">
+<div class="enter-box">
 	<%= link_to "サインイン", new_user_registration_path %>
 	<%= link_to "ログイン", new_user_session_path %>
+	<%= link_to_unless_current  "公開されている記録",  pet_records_path %>
 </div>

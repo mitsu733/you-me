@@ -1,59 +1,11 @@
 <div class="row">
 </div>
 
-<div class="row">
-  <% pet_records.each do |record| %>
-    <% if record.user.user_status == "公開" %>
-    	<%= link_to(pet_record_path(record)) do %>
-        <table>
-          <tr>
-          	<td><%= l(record.created_at) %></td>
-          </tr>
-          <tr>
-            <td>
-              <%= record.user.name %>
-              <%= record.user.pet_name %>
-            </td>
-          </tr>
-          <tr>
-          	<td>
-          		トイレ<%= record.toilet %>
-          		お水<%= record.water %>
-          		ごはん<%= record.food %>
-              元気<%= record.energy %>
-          	</td>
-          </tr>
-          <tr>
-            <td>
-              <%= attachment_image_tag record, :record_image, size: "100x100" %>
-              </td>
-          </tr>
-          <tr>
-            <td><%= truncate(record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %></td>
-          </tr>
-        </table>
-      <% end %><!-- linkのend -->
-
-          <!-- タグ機能 -->
-          <tr>
-            <td>
-              <% if record.tags.any? %>
-                <% record.tags.each do |tag| %>
-                  <%= link_to tag_path(tag_id: tag.id) do %>
-                    #<%= tag.tag %>
-                  <% end %>
-                <% end %>
-              <% end %>
-            </td>
-          </tr>
-
-          <!-- いいね機能 -->
-          <tr>
-            <td id="likes_buttons_<%= record.id %>">
-              <%= render 'likes/like', pet_record: record %>
-            </td>
-          </tr>
-
-    <% end %>
-  <% end %>
+<div class="record-box">
+	<% pet_records.each do |record| %>
+		  <% if record.user.user_status == "公開" %>
+		  	<%= render "record-parts", record: record %>
+		  <% end %>
+	<% end %>
 </div>
+

@@ -2,9 +2,7 @@ class HomesController < ApplicationController
   def top
   end
 
-  def about_user
+  def about
   end
 
-  def about_record
-  end
 end

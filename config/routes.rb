@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
-  get 'homes/about_user', to: "homes#about_user", as: "about_user"
-  get 'homes/about_record', to: "homes#about_record", as: "about_record"
+  get 'homes/about', to: "homes#about", as: "about"
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -11,7 +10,7 @@ Rails.application.routes.draw do
   get '/search', to: "search#search", as: "search"
 
   get 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
-  resources :users, only: [:index, :show, :edit, :update, :destroy] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resource :user_relationships, only: [:create, :destroy]
     get :followed, on: :member
     get :follower, on: :member
