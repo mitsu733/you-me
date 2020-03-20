@@ -8,17 +8,20 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
     <header>
       <% if user_signed_in? %>
+        <nav>
+        <!-- ユーザーログイン済の時のみヘッダー表示 -->
+        <div class="title">
         <h1>
           YOU □ ME
         </h1>
-        <nav>
-        <!-- ユーザーログイン済の時のみヘッダー表示　-->
-          <%= I18n.l(Date.today) %>
+        <h5><%= I18n.l(Date.today) %></h5>
+      </div>
           <ul>
             <li><%= link_to_unless_current  "フォロー",followed_user_path(current_user) %></li>
             <li><%= link_to_unless_current  "フォロワー",follower_user_path(current_user) %></li>
@@ -26,24 +29,25 @@
             <li><%= link_to_unless_current  "新しい記録",new_pet_record_path %></li>
              <li><%= link_to_unless_current  "ホーム",  user_path(current_user) %></li>
             <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
+            <li>
+              <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
+            </li>
           </ul>
-          <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
 
           <!-- 検索機能 -->
           <%= search_form_for @search, url:search_path do |search| %>
-            <%= search.label :word, "検索" %>
-            <%= search.search_field :user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any %>
-            <div class="actions">
-              <%= search.submit "検索" %>
-            </div>
+          <div class="input-group">
+            <%= search.search_field :user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any, class: "form-control", placeholder: "検索" %>
+            <span class="input-group-btn">
+              <%= search.submit "検索", class: "btn btn-default" "search" %>
+            </span>
+          </div>
           <% end %>
         </nav>
       <% end %>
     </header>
 
-    <div class="container">
       <%= yield %>
-    </div>
 
   </body>
 </html>

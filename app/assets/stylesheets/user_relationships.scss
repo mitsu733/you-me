@@ -1,3 +1,18 @@
 // Place all the styles related to the user_relationships controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+@import "like_tag_follow";
+
+.item-box{
+	border:{
+		color: $green1;
+	}
+	.items{
+		.follow-user-intoroduction{
+		}
+		.follow{
+		}
+	}
+}

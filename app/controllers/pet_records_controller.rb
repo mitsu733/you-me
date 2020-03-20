@@ -4,7 +4,7 @@ class PetRecordsController < ApplicationController
 
   def index
     session[:is_last_visit_page_pets_records] = true
-    @pet_records = PetRecord.where(record_public: true).order(created_at: :desc)
+    @pet_records = PetRecord.where(record_public: true).order(created_at: :desc).page(params[:page]).per(8)
   end
 
   def new
@@ -50,6 +50,18 @@ class PetRecordsController < ApplicationController
   def tag
      @tag = Tag.find(params[:tag_id])
      @tag_pet_records = @tag.record_tags
+  end
+
+  def infinite_scrolling
+    @pet_records = PetRecord.where(record_public: true).order(created_at: :desc).page(params[:page]).per(8)
+    if @pet_records.total_pages < params[:page].to_i
+      @next_page = "last"
+      else
+      @next_page = params[:page].to_i + 1
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 
 

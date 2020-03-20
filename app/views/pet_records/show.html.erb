@@ -22,7 +22,7 @@
         </tr>
 
         <tr>
-            <td>
+            <td class="show-record_image">
                 <%= attachment_image_tag @pet_record, :record_image, size: "100x100" %>
             </td>
         </tr>
@@ -36,7 +36,7 @@
                 </h4>
         	</td>
         </tr>
-        
+
         <!-- いいね機能 -->
         <tr>
             <td id="likes_buttons_<%= @pet_record.id %>">
@@ -47,7 +47,7 @@
         <tr>
             <td>
                 <h4>
-                <%= @pet_record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
+                <%= @pet_record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
                 </h4>
             </td>
         </tr>

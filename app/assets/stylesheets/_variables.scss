@@ -1,0 +1,17 @@
+
+/* 色 */
+$green1:#00796B;
+$green2:#75b79e;
+$green3:#a7e9af;
+$green4:#CDDC39;
+$yellow:#eef9bf;
+$blue:#6a8caf;
+
+/*フォント関係*/
+
+
+/*写真用の円の設定*/
+@mixin circle {
+    border-radius: 50%;
+    background-position: left top;
+}

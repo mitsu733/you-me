@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get :follower, on: :member
   end
 
+  get '/infinite_scrolling', to: "pet_records#infinite_scrolling"
   get '/likes', to: 'likes#index',as: 'likes'
   get 'pet_records/tag', to: 'pet_records#tag',as: 'tag'
   resources :pet_records do

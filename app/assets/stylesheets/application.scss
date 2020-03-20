@@ -15,5 +15,56 @@
  */
 	@import "bootstrap-sprockets";
 	@import "bootstrap";
-
 	
+	@import "variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	color: $green4;
+}
+
+header{
+	background-color: $yellow;
+	margin: 0 auto;
+	color: $green1;
+	nav{
+		display: flex;
+		.title{
+			width: 200px;
+			padding: 10px;
+			h1{
+				font-size: 30px;
+				margin: 0;
+				text-align: center;
+			}
+			h5{
+				font-size: 15px;
+				text-align: center;
+				margin: 0 auto;
+			}
+		}
+		ul{
+			text-align: center;
+  			padding: 10px 0;
+  			margin: 0 auto;
+			li{
+			  	list-style: none;
+			  	display: inline-block;
+			  	margin: 0 20px;
+			}
+		}
+		.search-input{
+			border: 1px;
+		}
+		.search{
+			border: 1px;
+		}
+	}
+}
+

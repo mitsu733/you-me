@@ -1,3 +1,5 @@
-<% @like_pet_records.each do |record| %>
-	<%= render 'likes/like-tag', record: record %>
-<% end %>
+<div class="box">
+	<% @like_pet_records.each do |record| %>
+		<%= render 'likes/like-tag', record: record %>
+	<% end %>
+</div>

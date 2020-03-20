@@ -1,1 +1,9 @@
-<%= render "pet_records/index", pet_records: @pet_records %>
+<div class="row">
+</div>
+
+<div class="record-box" data-page="2">
+	<div>
+		<%= render "pet_records/index", pet_records: @pet_records %>
+		<div class="loader-container d-none"></div>
+	</div>
+</div>

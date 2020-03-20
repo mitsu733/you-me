@@ -1,28 +1,20 @@
 <% users.each do |user| %>
 	<% if user.user_status == "公開" %>
 	  	<%= link_to(user_path(user)) do %>
-		    <table>
-		        <tr>
-			        <td>
-			            <%= user.name %>
-			            <%= user.pet_name %>
-			        </td>
-		        </tr>
-		        <tr>
-		        	<td>
-		            	<%= user.intoroduction %>
-		        	</td>
-		        </tr>
-		        <tr>
-		        	<td><%= attachment_image_tag user, :profile_image, size: "100x100" %></td>
-		        </tr>
-		        <!-- フォロー機能 -->
-		        <tr>
-		        	<td>
-			        	<%= render 'users/follow', user: user %>
-		        	</td>
-		        </tr>
-		    </table>
+		    <div class="item-box">
+	        	<%= attachment_image_tag user, :profile_image, size: "100x100", class: "image" %>
+				<div class="item">
+		            <p class="name">
+		            	人：<%= user.name %> /
+		            	動物：<%= user.pet_name %>
+		        	</p>
+		        	<p class="follow-user-intoroduction">
+	            	<%= user.intoroduction %>
+					</p>
+	        		<!-- フォロー機能 -->
+		        	<%= render 'users/follow', user: user %>
+				</div>
+		    </div>
 		<% end %>
 	<% end %>
 <% end %>

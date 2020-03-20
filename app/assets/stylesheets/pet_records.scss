@@ -1,0 +1,59 @@
+// Place all the styles related to the records controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+	@import "variables";
+
+.record-box{
+	div{
+		padding: 10px;
+		display: flex;
+	    align-items: flex-start;
+	    align-content: flex-start;
+	    flex-wrap: wrap;
+	    justify-content: space-between;
+		.record-box-item{
+			background-color: $green2;
+			width: 250px;
+			height: 350px;
+			margin: 20px;
+			.record_image{
+				width: 250px;
+				height: 80px;
+				object-fit: cover;
+			}
+			.item-content {
+				padding: 3% 3% 3% 3%;
+			}
+		}
+	}
+}
+
+.status-radio-button{
+	width: 600px;
+	margin: 0 auto;
+	text-align: center;
+	table{
+		font:{
+			size: 20px;
+		}
+		tr{
+			width: 600px;
+			th{
+				padding: 10px 20px;
+			}
+			td{
+				padding: 10px 20px;
+			}
+			.text-form{
+				border:{
+					color: $green4;
+					width: 100px;
+				}
+			}
+		}
+
+	}
+}
+
+

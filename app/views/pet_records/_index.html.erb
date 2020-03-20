@@ -1,11 +1,5 @@
-<div class="row">
-</div>
-
-<div class="record-box">
-	<% pet_records.each do |record| %>
-		  <% if record.user.user_status == "公開" %>
-		  	<%= render "record-parts", record: record %>
-		  <% end %>
-	<% end %>
-</div>
-
+<% pet_records.each do |record| %>
+	  <% if record.user.user_status == "公開" %>
+	  	<%= render "record-parts", record: record %>
+	  <% end %>
+<% end %>

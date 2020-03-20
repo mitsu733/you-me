@@ -6,6 +6,8 @@
 		<th><%= sort_link(@search, :user_pet_name, "ペットの名前") %></th>
 		<th><%= sort_link(@search, :user_intoroduction, "自己紹介") %></th>
 		<th><%= sort_link(@search, :body, "記録") %></th>
+		<th></th>
+		<th></th>
 	</tr>
 	<!-- 検索結果 -->
 	<% @words.each do |word| %>
@@ -21,9 +23,14 @@
 				<td><%= word.user.intoroduction %></td>
 				<td>
 					<%=  link_to(pet_record_path(word)) do %>
-					<%= word.body %>
+						<%= truncate(word.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
 					<% end %>
 				</td>
+				<td>
+					<!-- タグ機能 -->
+					<%= render "pet_records/tag", record: word %>
+				</td>
+
 				 <!-- フォロー機能 -->
 	            <td>
 	                <%= render 'users/follow', user: word.user %>

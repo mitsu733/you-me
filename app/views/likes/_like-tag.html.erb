@@ -1,31 +1,30 @@
 <% if(record.user.user_status == "公開")&&(record.record_public == true)%>
-    <div class="index-record-box">
+    <div class="item-box">
     	<%= link_to(pet_record_path(record)) do %>
-	        <table class="table">
-		        <tr>
-			        <td>
-	          <%= attachment_image_tag record, :record_image, size: "100x100" %>
-	        </td>
-	          <%= record.user.name %>
-	          <%= record.user.pet_name %>
-	        </span>
-	        <span class="record-body-index">
-	          <%= truncate(record.body.gsub!(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
-	        </span>
-     	<% end %><!-- linkのend -->
+		  	<div>
+	          <%= attachment_image_tag record, :record_image, size: "100x100", class: "image" %>
+	      	</div>
+	      	<div class="items">
+	      		<p class="like-tag-date">
+	    			<%= l(record.created_at.to_date) %>
+	    		</p>
+		      	<p class="name"></p>
+		          人：<%= record.user.name %> / 
+		          動物：<%= record.user.pet_name %>
+		        </p>
+		        <p class="like-tag-body">
+		          <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
+		        </p>
+	     	<% end %><!-- linkのend -->
+	     </div>
 
      	<!-- タグ機能 -->
     	<%= render "pet_records/tag", record: record %>
 
 	    <!-- いいね機能 -->
-	    <span id="likes_buttons_<%= record.id %>">
+	    <div id="likes_buttons_<%= record.id %>">
 	      <%= render 'likes/like', pet_record: record %>
-	    </span>
-
-	    <span class="record-date-index">
-	      <td><%= l(record.created_at.to_date) %></td>
-	    </span>
-
+	    </div>
     </div>
 <% end %>
 
