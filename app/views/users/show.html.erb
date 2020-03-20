@@ -1,43 +1,47 @@
 <div class="container">
-	<div class="row">
-		<table>
-			<tr>
-				<td><h3><%= @user.name %><%= @user.pet_name %></h3></td>
-			</tr>
-			<tr>
-				<td><%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100" %></td>
-			</tr>
-			<tr>
-				<td>
-					<%= @user.intoroduction %>
-				</td>
-			</tr>
-			<tr>
-				<%if @user.id == current_user.id %>
-					<td>
-						<%= link_to '編集する',edit_user_path %>
-					</td>
-				<% end %>
-			</tr>
-			<tr>
-				<td>
-					フォロワー：<%= @user.followers.count %>
-					フォロー：<%= @user.followeds.count %>
-					<%= render 'users/follow', user: @user %>
-				</td>
-			</tr>
-			<tr>
-				<td>
+	<div class="row user">
+		<div class="image-public">
+			<p class="public">
 				<% if @user.user_status == "非公開" %>
-					<%= "非公開" %>
+					プロフィール非公開<br>（記録の公開なし）
 				<% end %>
-				</td>
-			</tr>
-		</table>
+			</p>
+			<%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100",class: "image" %>
+			<div class="edit">
+				<%if @user.id == current_user.id %>
+					<%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x"></i><% end %>
+				<% end %>
+			</div>
+		</div>
+		<div class="user-status">
+			<p class="name-font">
+        	<span>人：</span>
+        	<%= @user.name %> /
+        	<span>
+            動物：
+        	</span>
+            <%= @user.pet_name %>
+			</p>
+			<p class="intoroduction-font">
+			<%= @user.intoroduction %>
+			</p>
+			<p class="follow-font">
+			<%= link_to follower_user_path(@user) do %>
+				<span>
+					フォロワー：<%= @user.followers.count %>
+				</span>
+				<% end %>
+			<%= link_to followed_user_path(@user) do %>
+				<span class="follow-font">
+					フォロー：<%= @user.followeds.count %>
+				</span>
+				</p>
+			<% end %>
+		</div>
 	</div>
 
 	<!-- 記録一覧部分 -->
-	<div class="row">
+	<div class="row record">
 		<div class="col-lg-10">
 			<div class="record-box"  data-page="2">
 				<div>

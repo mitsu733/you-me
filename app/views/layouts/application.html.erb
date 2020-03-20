@@ -27,7 +27,7 @@
             <li><%= link_to_unless_current  "フォロワー",follower_user_path(current_user) %></li>
             <li><%= link_to_unless_current  "いいね", likes_path %></li>
             <li><%= link_to_unless_current  "新しい記録",new_pet_record_path %></li>
-             <li><%= link_to_unless_current  "ホーム",  user_path(current_user) %></li>
+             <li><%= link_to_unless_current  "マイページ",  user_path(current_user) %></li>
             <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
             <li>
               <%= link_to_unless_current  "公開されている記録",  pet_records_path %>

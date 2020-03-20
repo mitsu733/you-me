@@ -1,3 +1,94 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+	@import "variables";
+	@import "mixin";
+
+.container{
+	.user{
+		margin: 10px;
+		padding: 20px;
+		border:{
+		@include main-border;
+		color: $main-color;
+		}
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: space-around;
+
+
+		.image-public{
+			width: 150px;
+			height: auto;
+			margin: 10px;
+			text-align: center;
+			.public{
+				font-size: $small-font-size;
+				margin: 10px;
+			}
+			.image{
+				@include circle;
+				width: 150px;
+				height: 150px;
+				padding: 0;
+				margin: $margin-center;
+			}
+			.edit{
+			padding: 10px;
+			text-align: center;
+			}
+		}
+
+		.user-status{
+			width: 60%;
+			margin: 10px;
+			.name-font{
+				font-size: $big-font-size;
+				padding: 10px 0;
+				span{
+					font-size: $base-font-size;
+				}
+			}
+			.intoroducution-font{}
+
+			.follow-font{
+				margin-top: 50px;
+				text-align: center;
+				span{
+					width: 150px;
+					height: auto;
+					padding: 10px;
+					margin: 0 20px;
+					text-align: center;
+					display: inline-block;
+					border:{
+						style: solid;
+						width: 2px;
+						radius: $button;
+					}
+				}
+			}
+		}
+
+	}
+
+	.record{
+		.col-lg-10{
+			.record-box{
+				div{
+				}
+			}
+		}
+	}
+
+	.col-lg-2{
+		table{
+			tr{
+				td{
+				}
+			}
+		}
+	}
+}

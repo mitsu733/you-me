@@ -3,32 +3,64 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 	@import "variables";
-
+	@import "mixin";
+/* _record-parts部分 */
 .record-box{
 	div{
-		padding: 10px;
 		display: flex;
 	    align-items: flex-start;
 	    align-content: flex-start;
 	    flex-wrap: wrap;
 	    justify-content: space-between;
+
+
 		.record-box-item{
-			background-color: $green2;
+			position: relative;
+			color: $font-color;
+			a {
+				color: $font-color;
+			}
+			background: $rgba;
 			width: 250px;
 			height: 350px;
 			margin: 20px;
+			@include transition;
+				&:hover, &:focus {
+					color: $main-color;
+					a {
+						color: $font-sub-color;
+					}
+					box-shadow: $box-shadow;
+					background: $rgba-hover;
+
+				}
 			.record_image{
-				width: 250px;
-				height: 80px;
-				object-fit: cover;
+			padding: 5px;
+			width: 250px;
+			height: 160px;
 			}
-			.item-content {
-				padding: 3% 3% 3% 3%;
+			.record-item {
+				width: 250px;
+				p{
+					padding: 5px;
+				}
+				.date{
+					text-align: left;
+				}
+				.user-name{
+					text-align: right;
+				}
+				.pet-stasu{
+					position: absolute;
+					bottom: 0;
+				}
 			}
 		}
 	}
 }
 
+
+/* _new-edit部分 */
 .status-radio-button{
 	width: 600px;
 	margin: 0 auto;
@@ -47,7 +79,6 @@
 			}
 			.text-form{
 				border:{
-					color: $green4;
 					width: 100px;
 				}
 			}

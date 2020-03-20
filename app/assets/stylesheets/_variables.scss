@@ -1,17 +1,23 @@
 
 /* 色 */
-$green1:#00796B;
-$green2:#75b79e;
-$green3:#a7e9af;
-$green4:#CDDC39;
-$yellow:#eef9bf;
-$blue:#6a8caf;
-
-/*フォント関係*/
+$main-color:#75b79e;
+$sub-color:#00796B;
+$font-color:#6a8caf;
+$font-sub-color:#CDDC39;
+$rgba: rgba(117,183,158,0.5);
 
 
-/*写真用の円の設定*/
-@mixin circle {
-    border-radius: 50%;
-    background-position: left top;
-}
+
+/*フォント*/
+$base-font-size: 15px;
+$small-font-size: 13px;
+$big-font-size: 20px;
+
+/*余白*/
+$margin-center: 0 auto;
+
+/* 角丸 */
+$button: 10px;
+
+$box-shadow: 5px 5px 5px 5px rgba(50,0,0,0.2);
+$rgba-hover: rgba(117,183,158,1);
