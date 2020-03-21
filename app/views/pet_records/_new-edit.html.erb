@@ -59,7 +59,7 @@
 		</table>
 
 		<div class="record">
-			  <%= f.attachment_field :record_image %>
+			  <%= f.attachment_field :record_image, class: "img" %>
 			  <%= f.text_area :body, class: "text-form" %>
 		</div>
 
@@ -73,6 +73,6 @@
 			  <%= f.label(:record_public, :非公開) %>
 			<% end %>
 		</div>
-			 <%= f.submit "記録", class: "btn btn-default" %>
+			 <%= f.submit "記録", class: "btn btn-default record-btn" %>
 	</div>
 <% end %>
