@@ -19,11 +19,10 @@
 <li class="tag">
      	<!-- タグ機能 -->
     	<%= render "pet_records/tag", record: record %>
-
+</li>
 	    <!-- いいね機能 -->
-	    <span id="likes_buttons_<%= record.id %>">
+	    <li id="likes_buttons_<%= record.id %>">
 	      <%= render 'likes/like', pet_record: record %>
-	  </span>
 	    </li>
     </ul>
 </div>

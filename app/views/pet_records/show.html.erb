@@ -13,11 +13,11 @@
             </td>
         </tr>
         <tr>
-            <td class="pet-status">
-                トイレ<%= @pet_record.toilet %>
-                お水<%= @pet_record.water %>
-                ごはん<%= @pet_record.food %>
-                元気<%= @pet_record.energy %>
+            <td class="pet-status", style="line-height: 2em">
+                トイレ：<%= @pet_record.toilet %> / 
+                お水：<%= @pet_record.water %> / 
+                ごはん：<%= @pet_record.food %> / 
+                元気：<%= @pet_record.energy %>
             </td>
         </tr>
 
@@ -33,9 +33,9 @@
 
         <tr>
             <td>
-                <h4>
+                <p  class="body">
                 <%= @pet_record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
-                </h4>
+</p>
             </td>
         </tr>
 
@@ -46,25 +46,28 @@
             </td>
           </tr>
 
-        <tr>
-            <td>
-        	    <% if(@pet_record.user_id == current_user.id)%>
-            	    <%= link_to "変更", edit_pet_record_path(@pet_record) %>
-            	    <%= link_to "削除", @pet_record, method: :delete %>
-            	<%end%>
-    		</td>
-    	</tr>
+
          <!-- フォロー機能 -->
         <tr>
-            <td class="follow-box">
+            <td class="follow-box", align="right">
                 <%= render 'users/follow', user: @pet_record.user %>
-            </td>
+
 
           <!-- いいね機能 -->
-            <td id="likes_buttons_<%= @pet_record.id %>">
+            <span id="likes_buttons_<%= @pet_record.id %>">
                 <%= render 'likes/like', pet_record: @pet_record %>
+            </span>
             </td>
-
         </tr>
+
+        <tr>
+            <td>
+                <% if(@pet_record.user_id == current_user.id)%>
+                    <%= link_to "変更", edit_pet_record_path(@pet_record) %> / 
+                    <%= link_to "削除", @pet_record, method: :delete %>
+                <%end%>
+            </td>
+        </tr>
+
     </table>
 </div>

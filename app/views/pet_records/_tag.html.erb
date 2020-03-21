@@ -2,9 +2,7 @@
 <% if record.tags.any? %>
     <% record.tags.each do |tag| %>
       <%= link_to tag_path(tag_id: tag.id) do %>
-        <h5 class="record-tag-font">
-        	#<%= tag.tag %>
-        </h5>
+        	#<%= tag.tag %>  
       <% end %>
     <% end %>
 <% end %>

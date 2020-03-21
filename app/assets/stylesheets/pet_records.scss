@@ -102,6 +102,9 @@
 .show-record-box{
 	width: 90%;
 	margin: $margin-center;
+	td{
+		padding: 10px;
+	}
 	.record-table{
 		width: 60%;
 		margin: $margin-center;
@@ -124,7 +127,25 @@
 			img{
 			width: 60%;
 			height: auto;
-}
+		}
+		.body{
+			white-space: break-spaces;
+			letter-spacing: 0.2em;
+		}
+		.follow-box{
+			p{display: inline-block;
+			width: 10px;
+			border{
+			@include main-border;
+			radius: $button;
+		}
+	}
+		}
+		span{
+			width: 10px;
+			display: inline-block;
+		}
+
 		}
 	}
 }

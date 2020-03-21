@@ -3,16 +3,4 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-@import "like_tag_follow";
-
-.item-box{
-	border:{
-		color: $main-color;
-	}
-	.items{
-		.follow-user-intoroduction{
-		}
-		.follow{
-		}
-	}
-}
+@import "follow";
