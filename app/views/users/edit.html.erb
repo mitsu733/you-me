@@ -1,37 +1,39 @@
-<h1>Users#edit</h1>
 <div class="user-edit">
+	<p class="user-edit-title">プロフィールの編集</p>
 	<%= form_with(model: @user, local: true) do |f| %>
 		<table>
 			<tr>
 				<td>
-					<%= f.attachment_field :profile_image %>
+					<%= f.attachment_field :profile_image, class: "img" %>
 				</td>
 			</tr>
 			<tr>
 				<td>
-				  	<%= f.label :name %>
+				  	<%= f.label :"ひとのなまえ", class: "user-name" %>
 				    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
 		  		</td>
 		  	</tr>
 		  	<tr>
 		  		<td>
-				  	<%= f.label :pet_name %>
+				  	<%= f.label :"どうぶつのなまえ",class: "pet-name" %>
 				    <%= f.text_field :pet_name, autofocus: true, autocomplete: "pet_name" %>
 				 </td>
 			</tr>
 			<tr>
 				<td>
-				    <%= f.text_area :intoroduction %>
+				    <%= f.text_area :intoroduction, class: "user-intoroduction" %>
 				</td>
 			</tr>
 			<tr>
-				<td>
+				<td class="status-radio-button">
 				  	<%= f.radio_button :user_status, "公開" %>
 					<%= f.label :user_status, "公開" %>
 					<%= f.radio_button :user_status, "非公開" %>
 					<%= f.label :user_status, "非公開" %>
-					<%= f.submit %>
 				</td>
+			</tr>
+			<tr>
+				<td><%= f.submit "更新", class: "btn btn-default user-btn" %></td>
 			</tr>
 		</table>
 	<%end%>
@@ -44,10 +46,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>登録メールアドレス</td>
-		</tr>
-		<tr>
-			<td><%= @user.email %></td>
+			<td>登録メールアドレス：<%= @user.email %></td>
 		</tr>
 		<tr>
 			<td>
