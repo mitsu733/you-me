@@ -1,39 +1,52 @@
-<h2>編集 <%= resource_name.to_s.humanize %></h2>
+<div class="user-edit">
+  <p class="user-edit-title">メール・パスワードの編集 <% resource_name.to_s.humanize %></p>
+  
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <table>
+      <tr>
+        <td>
+          <%= f.label :"メール" %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        </td>
+      </tr>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :"メール" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :"新しいパスワード" %> (変更しない場合は空白にしてください)<br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %>文字以上</em>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
     <% end %>
-  </div>
 
-  <div class="field">
-    <%= f.label :"新しいパスワード" %>(再入力)<br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <tr>
+        <td>
+          <%= f.label :"新しいパスワード" %> <br>(変更しない場合は空白にしてください)<br />
+          <%= f.password_field :password, autocomplete: "new-password" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %>文字以上</em>
+          <% end %>
+        </td>
+      </tr>
 
-  <div class="field">
-    <%= f.label :"現在のパスワード" %> (変更するには現在のパスワードが必要です)<br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
+      <tr>
+        <td>
+          <%= f.label :"新しいパスワード" %><br>(再入力)<br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+        </td>
+      </tr>
 
-  <div class="actions">
-    <%= f.submit "変更" %>
-  </div>
-<% end %>
+      <tr>
+        <td>
+          <%= f.label :"現在のパスワード" %> <br>(変更するには現在のパスワードが必要です)<br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </td>
+      </tr>
 
-<%#= link_to "Back", user_path(params[:id]) %>
+      <tr>
+        <td>
+          <%= f.submit "変更", class: "btn btn-default user-btn" %>
+        </td>
+      </tr>
+    </table>
+  <% end %>
+</div>
+
+  <%#= link_to "Back", user_path(params[:id]) %>

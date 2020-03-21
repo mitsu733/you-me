@@ -1,3 +1,39 @@
 // Place all the styles related to the search controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "variables";
+@import "mixin";
+
+
+.search-box{
+	width: 90%;
+	margin: $margin-center;
+	text-align: center;
+	table{
+		margin: $margin-center;
+		text-align: center;
+		tbody{
+		width: 100%;
+			tr{
+				width: 100%;
+				th ,td {
+					border-bottom :{
+						style: solid;
+						width: 1px;
+						color: $main-color;
+					}
+					text-align: center;
+					padding: 30px 30px 0 0;
+					img{
+						@include circle;
+						border:{
+							@include main-border;
+							color: $main-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
