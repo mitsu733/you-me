@@ -25,34 +25,45 @@
 			height: 350px;
 			margin: 20px;
 			@include transition;
-				&:hover, &:focus {
-					color: $main-color;
-					a {
-						color: $font-sub-color;
-					}
-					box-shadow: $box-shadow;
-					background: $rgba-hover;
-
+			&:hover, &:focus {
+				color: $main-color;
+				a {
+					color: $font-sub-color;
 				}
-			.record_image{
-			padding: 5px;
-			width: 250px;
-			height: 160px;
+				box-shadow: $box-shadow;
+				background: $rgba-hover;
+
 			}
-			.record-item {
-				width: 250px;
-				p{
+
+			ul{
+				margin: $margin-center;
+				list-style: none;
+				.record_image{
 					padding: 5px;
+					width: 250px;
+					height: 160px;
 				}
 				.date{
-					text-align: left;
+					font-size: $big-font-size;
+					padding: 10px 10px 0 10px;
+					text-align: center;
 				}
 				.user-name{
-					text-align: right;
+					text-align: center;
+					padding: 0 10px;
+					font-size: $small-font-size;
 				}
-				.pet-stasu{
-					position: absolute;
-					bottom: 0;
+				.record-body{
+					padding: 0 10px ;
+				}
+				.tag{
+					padding: 0 10px ;
+					p {
+						text-align: right;
+					}
+					.pet-stasu{
+						text-align: center;
+					}
 				}
 			}
 		}
@@ -87,4 +98,34 @@
 	}
 }
 
+/*show*/
+.show-record-box{
+	width: 90%;
+	margin: $margin-center;
+	.record-table{
+		width: 60%;
+		margin: $margin-center;
+		h3{
+			font-size: $big-font-size;
+			text-align: center;
+		}
+		.name-box{
+			text-align: center;
+			span{
+				font-size: $small-font-size;
+			}
+		}
+		.pet-status{
+			text-align: center;
+		}
+		.show-record_image{
+			margin: $margin-center;
+			text-align: center;
+			img{
+			width: 60%;
+			height: auto;
+}
+		}
+	}
+}
 

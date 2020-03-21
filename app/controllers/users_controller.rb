@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
  def show
  	@user = User.find(params[:id])
- 	@pet_records = PetRecord.where(user_id: params[:id]).order(created_at: :desc)
+ 	@pet_records = PetRecord.where(user_id: @user).order(created_at: :desc)
  end
 
  def edit

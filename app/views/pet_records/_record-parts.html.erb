@@ -1,35 +1,37 @@
 <div class="record-box-item">
   <%= link_to(pet_record_path(record)) do %>
-    <div class="record-image">
+    <ul>
+    <li class="record-image">
       <%= attachment_image_tag record, :record_image, size: "100x100%" %>
-    </div>
-    <div class="record-item">
-      <p class="date">
+    </li>
+      <li class="date">
         <%= l(record.created_at.to_date) %>
-      </p>
-      <p class="user-name">
+      </li>
+      <li class="user-name">
         <%= link_to_unless_current record.user.name, user_path(record.user.id) %> / 
         <%= record.user.pet_name %>
-      </p>
-      <p class="record-body">
-        <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
-      </p>
-    </div>
+      </li>
+      <li class="record-body">
+        <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 40) %>
+      </li>
   <% end %><!-- linkのend -->
 
   <!-- タグ機能 -->
-  <div class="tag">
+  <li class="tag">
     <%= render "pet_records/tag", record: record %>
 
   <!-- いいね機能 -->
-    <span id="likes_buttons_<%= record.id %>">
+    <p id="likes_buttons_<%= record.id %>">
       <%= render 'likes/like', pet_record: record %>
-   </span>
-  </div>
-  <div class="pet-stasus">
+    </p>
+
+  
+  <span class="pet-stasus">
     トイレ<%= record.toilet %>
     お水<%= record.water %>
     ごはん<%= record.food %>
     元気<%= record.energy %>
-  </div>
+  </span>
+  </li>
+  </ul>
 </div>

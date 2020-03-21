@@ -4,27 +4,28 @@
 		  	<div>
 	          <%= attachment_image_tag record, :record_image, size: "100x100", class: "image" %>
 	      	</div>
-	      	<div class="items">
-	      		<p class="like-tag-date">
+	      	<ul class="items">
+	      		<li class="like-tag-date">
 	    			<%= l(record.created_at.to_date) %>
-	    		</p>
-		      	<p class="name"></p>
-		          人：<%= record.user.name %> / 
-		          動物：<%= record.user.pet_name %>
-		        </p>
-		        <p class="like-tag-body">
+	    		</li>
+		      	<li class="name">
+		         <span> 人：</span><%= record.user.name %> / 
+		          <span>動物：</span><%= record.user.pet_name %>
+		        </li>
+		        <li class="like-tag-body">
 		          <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
-		        </p>
+		        </li>
 	     	<% end %><!-- linkのend -->
-	     </div>
-
+<li class="tag">
      	<!-- タグ機能 -->
     	<%= render "pet_records/tag", record: record %>
 
 	    <!-- いいね機能 -->
-	    <div id="likes_buttons_<%= record.id %>">
+	    <span id="likes_buttons_<%= record.id %>">
 	      <%= render 'likes/like', pet_record: record %>
-	    </div>
-    </div>
+	  </span>
+	    </li>
+    </ul>
+</div>
 <% end %>
 

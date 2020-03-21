@@ -8,41 +8,28 @@
             </td>
         </tr>
         <tr>
-            <td>
-                <h5>
-                <%= @pet_record.user.name %>/<%= @pet_record.user.pet_name %>
-                </h5>
-            </td>
-
-            <!-- フォロー機能 -->
-        <tr>
-            <td>
-                <%= render 'users/follow', user: @pet_record.user %>
+            <td class="name-box">
+                <span>人：</span><%= @pet_record.user.name %>/<span>動物：</span><%= @pet_record.user.pet_name %>
             </td>
         </tr>
+        <tr>
+            <td class="pet-status">
+                トイレ<%= @pet_record.toilet %>
+                お水<%= @pet_record.water %>
+                ごはん<%= @pet_record.food %>
+                元気<%= @pet_record.energy %>
+            </td>
+        </tr>
+
+
+           
 
         <tr>
             <td class="show-record_image">
-                <%= attachment_image_tag @pet_record, :record_image, size: "100x100" %>
+                <%= attachment_image_tag @pet_record, :record_image, class: "img" %>
             </td>
-        </tr>
-        <tr>
-        	<td>
-                <h4>
-        		トイレ<%= @pet_record.toilet %>
-        		お水<%= @pet_record.water %>
-        		ごはん<%= @pet_record.food %>
-        		元気<%= @pet_record.energy %>
-                </h4>
-        	</td>
         </tr>
 
-        <!-- いいね機能 -->
-        <tr>
-            <td id="likes_buttons_<%= @pet_record.id %>">
-                <%= render 'likes/like', pet_record: @pet_record %>
-            </td>
-        </tr>
 
         <tr>
             <td>
@@ -67,5 +54,17 @@
             	<%end%>
     		</td>
     	</tr>
+         <!-- フォロー機能 -->
+        <tr>
+            <td class="follow-box">
+                <%= render 'users/follow', user: @pet_record.user %>
+            </td>
+
+          <!-- いいね機能 -->
+            <td id="likes_buttons_<%= @pet_record.id %>">
+                <%= render 'likes/like', pet_record: @pet_record %>
+            </td>
+
+        </tr>
     </table>
 </div>

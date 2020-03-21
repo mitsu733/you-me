@@ -23,14 +23,37 @@
 		border:{
 			@include main-border;
 		}
+		li{
+			margin-bottom: 10px;
+		}
 		.image{
+			width: 100px;
+			height: 100px;
 		    @include circle;
+		    border:{
+			@include main-border;
+			color: $main-color;
+			}
 		}
 		.items{
 			display: inline-block;
+			list-style: none;
 			padding: 15px;
+
 			.name{
-				font-size: 15px;
+				font-size: $base-font-size;
+				span{
+					font-size: $small-font-size;
+				}
+			.like-tag-body{
+				padding: 10px;
+					font-size: $small-font-size;
+			.tag{
+				span{
+					text-align: left;
+				}
+			}
+			}
 			}
 		}
 	}
