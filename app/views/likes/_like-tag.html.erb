@@ -9,8 +9,8 @@
 	    			<%= l(record.created_at.to_date) %>
 	    		</li>
 		      	<li class="name">
-		         <span> 人：</span><%= record.user.name %> / 
-		          <span>動物：</span><%= record.user.pet_name %>
+		         <span> ひとのなまえ：</span><%= record.user.name %> / 
+		          <span>どうぶつのなまえ：</span><%= record.user.pet_name %>
 		        </li>
 		        <li class="like-tag-body">
 		          <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>

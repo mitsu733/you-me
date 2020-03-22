@@ -10,8 +10,8 @@
 		margin: 10px;
 		padding: 20px;
 		border:{
-		@include main-border;
-		color: $main-color;
+			@include main-border;
+			color: $main-color;
 		}
 		display: flex;
 		flex-wrap: wrap;
@@ -20,13 +20,15 @@
 
 
 		.image-public{
-			width: 150px;
+			width: 180px;
 			height: auto;
 			margin: 10px;
 			text-align: center;
 			.public{
 				font-size: $small-font-size;
 				margin: 10px;
+				text-align: center;
+				color: $font-color;
 			}
 			.image{
 				@include circle;
@@ -35,10 +37,12 @@
 				object-fit: cover;
 				padding: 0;
 				margin: $margin-center;
+				text-align: center;
 			}
 			.edit{
-			padding: 10px;
-			text-align: center;
+				padding: 10px;
+				margin: $margin-center;
+				text-align: center;
 			}
 		}
 
@@ -52,25 +56,15 @@
 					font-size: $base-font-size;
 				}
 			}
-			.intoroducution-font{
+			.intoroduction-font{
+				min-width: 80px;
+				white-space: pre-line;
 			}
 
 			.follow-font{
 				margin-top: 50px;
 				text-align: center;
-				span{
-					width: 150px;
-					height: auto;
-					padding: 10px;
-					margin: 0 20px;
-					text-align: center;
-					display: inline-block;
-					border:{
-						style: solid;
-						width: 2px;
-						radius: $button;
-					}
-				}
+
 			}
 		}
 	}

@@ -7,40 +7,29 @@
 				<% end %>
 			</p>
 			<%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100",class: "image" %>
-			<div class="edit">
-				<%if @user.id == current_user.id %>
-					<%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x"></i><% end %>
-				<% end %>
-			</div>
+			<%if @user.id == current_user.id %>
+				<%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x edit"></i><% end %>
+			<% end %>
 		</div>
 		<div class="user-status">
 			<p class="name-font">
-        	<span>人：</span>
-        	<%= @user.name %> /
-        	<span>
-            動物：
-        	</span>
-            <%= @user.pet_name %>
+	        	<span>ひとのなまえ：</span>
+	        	<%= @user.name %> /
+	        	<span>
+	            どうぶつのなまえ：
+	        	</span>
+	            <%= @user.pet_name %>
 			</p>
-			<p class="intoroduction-font" style="white-space: pre-wrap;" >
-			<%= @user.intoroduction %>
+			<p class="intoroduction-font" >
+				<%= @user.intoroduction %>
 			</p>
-			
 			 <!-- フォロー機能 -->
 			<p><%= render 'users/follow', user: @user %></p>
 
 			<p class="follow-font">
-			<%= link_to follower_user_path(@user) do %>
-				<span>
-					フォロワー：<%= @user.followers.count %>
-				</span>
-				<% end %>
-			<%= link_to followed_user_path(@user) do %>
-				<span class="follow-font">
-					フォロー：<%= @user.followeds.count %>
-				</span>
-				</p>
-			<% end %>
+			<%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user),  class: "btn btn-default" %>
+			<%= link_to "フォロワー：#{ @user.followeds.count }", followed_user_path(@user),  class: "btn btn-default" %>
+			</p>
 		</div>
 	</div>
 
