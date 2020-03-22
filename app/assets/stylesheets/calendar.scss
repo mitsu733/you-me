@@ -1,0 +1,40 @@
+@import "variables";
+@import "mixin";
+
+
+.simple-calendar{
+	width: 100%;
+	.calendar-heading {
+		width: 80%;
+		padding: 20px;
+		margin: $margin-center;
+		text-align: center;
+		.calendar-title{
+			font-size: $big-font-size;
+			color: $font-color;
+		}
+	}
+	table{
+		margin: $margin-center;
+		font:{
+			size: 20px;
+		}
+		tr{
+			.week {
+				text-align: center;
+				padding: 10px 20px;
+			}
+		}
+		.day{
+			width: 600px;
+			height: 150px;
+			td{
+				.calendar-record{
+					a{
+						font-size: $big-font-size;
+					}
+				}
+			}
+		}
+	}
+}

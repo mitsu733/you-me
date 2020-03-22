@@ -9,7 +9,7 @@
         </tr>
         <tr>
             <td class="name-box">
-                <span>人：</span><%= @pet_record.user.name %>/<span>動物：</span><%= @pet_record.user.pet_name %>
+                <span>ひとのなまえ：</span><%= @pet_record.user.name %>/<span>どうぶつのなまえ：</span><%= @pet_record.user.pet_name %>
             </td>
         </tr>
         <tr>
@@ -20,10 +20,6 @@
                 元気：<%= @pet_record.energy %>
             </td>
         </tr>
-
-
-           
-
         <tr>
             <td class="show-record_image">
                 <%= attachment_image_tag @pet_record, :record_image, class: "img" %>
@@ -33,9 +29,9 @@
 
         <tr>
             <td>
-                <p  class="body">
+                <p class="show-body">
                 <%= @pet_record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
-</p>
+                </p>
             </td>
         </tr>
 

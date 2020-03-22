@@ -155,25 +155,15 @@
 			img{
 			width: 60%;
 			height: auto;
+			}
 		}
-		.body{
+		.show-body{
+			width: 95%;
+			margin: $margin-center;
 			white-space: pre-line;
 			letter-spacing: 0.2em;
 		}
 		.follow-box{
-			p{display: inline-block;
-			width: 10px;
-			border{
-			@include main-border;
-			radius: $button;
-		}
-	}
-		}
-		span{
-			width: 10px;
-			display: inline-block;
-		}
-
 		}
 	}
 }

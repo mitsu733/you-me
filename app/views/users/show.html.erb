@@ -33,18 +33,34 @@
 		</div>
 	</div>
 
-	<!-- 記録一覧部分 -->
 	<div class="row record">
-		<div class="col-lg-10">
-			<div class="record-box"  data-page="2">
-				<div>
-					<% @pet_records.each do |record| %>
-						<%= render "pet_records/record-parts", record: record %>
-					<% end %>
+		<% if @user.id == current_user.id %>
+			<!-- カレンダー -->
+			<div class="col-lg-10">
+				<%= month_calendar(attribute: :created_at,events: @pet_records)do |date, records| %>
+			  		<%= I18n.l(date, format: :short) %>
+				 	 	<% records.each do |record| %>
+						    <span class="calendar-record">
+						    	<%= link_to pet_record_path(record) do %>
+						      		<%= record.energy %>
+						      	<% end %>
+						    </span>
+					  	<% end %>
+				<% end %>
+			</div>
+
+		<% else %>
+			<!-- 記録一覧部分 -->
+			<div class="col-lg-10">
+				<div class="record-box"  data-page="2">
+					<div>
+						<% @pet_records.each do |record| %>
+							<%= render "pet_records/record-parts", record: record %>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-
+		<% end %>
 
 		<div class="col-lg-2">
 			<% @pet_records.each do |record| %>

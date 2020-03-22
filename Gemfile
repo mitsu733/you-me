@@ -70,3 +70,4 @@ gem 'rails-i18n', '~> 5.1'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
 gem 'kaminari'
+gem "simple_calendar", "~> 2.0"
