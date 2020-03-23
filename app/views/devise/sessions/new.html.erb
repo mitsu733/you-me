@@ -18,13 +18,16 @@
     </tr>
     <tr>
       <td>
-        <%= f.submit "ログイン" %>
+        <%= f.submit "ログイン", class: "btn btn-default user-btn" %>
       </td>
     </tr>
     <tr>
       <td>
         <%= link_to "サインイン", new_user_registration_path %>
       </td>
+    </tr>
+    <tr>
+      <td><%= link_to "ホーム", root_path %></td>
     </tr>
   </table>
   <% end %>

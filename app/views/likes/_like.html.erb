@@ -1,15 +1,17 @@
-<% if pet_record.liked_by?(current_user) %>
-	<%= link_to pet_record_likes_path(pet_record), method: :delete, remote: true do %>
-		<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: orangered;"></i>
-    	<span class="like-font">
-    	<%= pet_record.likes.count %>
-    	</span>
-	<% end %>
-<% else %>
-	<%= link_to pet_record_likes_path(pet_record), method: :post, remote: true do %>
-		<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: gray;"></i>
-		<span class="like-font">
-		<%= pet_record.likes.count %>
-		</span>
+<% if user_signed_in? %>
+	<% if pet_record.liked_by?(current_user) %>
+		<%= link_to pet_record_likes_path(pet_record), method: :delete, remote: true do %>
+			<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: orangered;"></i>
+	    	<span class="like-font">
+	    	<%= pet_record.likes.count %>
+	    	</span>
+		<% end %>
+	<% else %>
+		<%= link_to pet_record_likes_path(pet_record), method: :post, remote: true do %>
+			<i class="fas fa-burn fa-lg" aria-hidden="true" style="color: gray;"></i>
+			<span class="like-font">
+			<%= pet_record.likes.count %>
+			</span>
+		<% end %>
 	<% end %>
 <% end %>

@@ -14,7 +14,7 @@
 		<% @words.each do |word| %>
 			<% if(word.user.user_status == "公開")&&(word.record_public == true)%>
 				<tr>
-					<td><%= attachment_image_tag word.user, :profile_image, size: "70x70", class: "img" %></td>
+					<td><%= attachment_image_tag word.user, :profile_image, size: "70x70", fallback: "no-image.jpg", class: "img" %></td>
 					<td>
 						<%= link_to(user_path(word.user)) do %>
 							<%= word.user.name %>

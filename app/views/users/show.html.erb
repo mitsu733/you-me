@@ -35,7 +35,7 @@
 
 	<div class="row record">
 		<% if @user.id == current_user.id %>
-			<!-- カレンダー -->
+			<!-- カレンダー ※current userの場合表示-->
 			<div class="col-lg-10">
 				<%= month_calendar(attribute: :created_at,events: @pet_records)do |date, records| %>
 			  		<%= I18n.l(date, format: :short) %>
@@ -63,9 +63,9 @@
 		<% end %>
 
 		<div class="col-lg-2">
+			<!-- <%#= @record_dates %> -->
 			<% @pet_records.each do |record| %>
-						<!-- if record.created_at. -->
-						<%#= l(record.created_at.to_date, format: :short).to_i %>
+					
 				<%= link_to(pet_record_path(record)) do %>
 					<table>
 						<tr>

@@ -5,3 +5,9 @@ ja:
       long: "%m月"
       short: "%d"
 
+activerecord:
+    errors:
+      messages:
+      Email: メール
+      Password: パスワード
+

@@ -1,5 +1,5 @@
 class PetRecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :infinite_scrolling]
   skip_before_action :reset_path_info, only: [:index]
 
   def index
@@ -17,7 +17,8 @@ class PetRecordsController < ApplicationController
     if  @pet_record.save
         redirect_to @pet_record
     else
-        @pet_record = PetRecord.new
+        @pet_record = PetRecord.new(pet_record_params)
+        @pet_record.user = current_user
         render "new"
     end
   end

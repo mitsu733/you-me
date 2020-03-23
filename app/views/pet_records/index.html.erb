@@ -1,13 +1,21 @@
-<div class="row">
+<div class="about">
+	<% if user_signed_in? %>
+		<%= link_to "アバウト『YOU □ ME』", about_path %>
+	<% else %>
+		<%= link_to "アバウト『YOU □ ME』", about_path %>
+		<div class="enter">
+		 	<%= link_to "サインイン", new_user_registration_path %>
+	     	<%= link_to "ログイン", new_user_session_path %>
+	     	<%= link_to "ホーム", root_path %>
+	 	</div>
+     <% end %>
 </div>
 
 <div class="record-box" data-page="2">
 	<div>
 		<%= render "pet_records/index", pet_records: @pet_records %>
-		<div class="loader-container d-none"></div>
+		<span class="loader-container d-none"></span>
 	</div>
 </div>
 
  <%= javascript_include_tag 'scrolling.js' %>
-
-<!-- <script type="text/javascript" src="scrolling.js"></script> -->

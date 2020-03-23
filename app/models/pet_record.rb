@@ -1,14 +1,25 @@
 class PetRecord < ApplicationRecord
-	# いいね機能
+
+	# バリデーション
+	with_options presence: true do
+	    validates :toilet
+	    validates :water
+	    validates :food
+	    validates :energy
+	end
+
+ 	validate :record_public_conditions
+
+	# いいね機能のアソシエーション
 	has_many :likes, dependent: :destroy
 
-	# タグ
+	# タグ機能のアソシエーション
 	has_many :record_tags, dependent: :destroy
 	has_many :tags, through: :record_tags
 
 	belongs_to :user
 
-	# 投稿画像
+	# 投稿画像の設定
 	attachment :record_image, destroy: false
 
 	# いいね機能
@@ -16,21 +27,20 @@ class PetRecord < ApplicationRecord
       likes.where(user_id: user.id).exists?
     end
 
+
     private
-    # タグ機能
+
+    # タグ機能の設定
     after_create do
-	    #1.controller側でcreateしたpet_recordを取得
 	    pet_record = PetRecord.find_by(id: self.id)
-	    #2.正規表現を用いて、pet_recordのbody内から『#○○○』の文字列を検出
 	    tags = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
-	    #3.mapメソッドでtags配列の要素一つ一つを取り出して、先頭の#を取り除いてDBへ保存する
 	    tags.uniq.map do |t|
 	      tag = Tag.find_or_create_by(tag: t.gsub('＃', "#").delete("#"))
 	      pet_record.tags << tag
 	    end
   	end
 
-  	before_update do 
+  	before_update do
 	    pet_record = PetRecord.find_by(id: self.id)
 	    pet_record.tags.clear
 	    tags = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
@@ -39,4 +49,11 @@ class PetRecord < ApplicationRecord
 	      pet_record.tags << tag
 	    end
 	end
+
+	def record_public_conditions
+	 	if body.blank? && record_image.blank? && record_public == true
+	 	   errors.add(:record_public, ": きろくを公開するためには文字か画像の入力が必要です")
+	 	end
+	end
+
 end

@@ -1,4 +1,15 @@
 <%= form_with(model: pet_record, local: true) do |f| %>
+  <% if pet_record.errors.any? %>
+  <h3>入力した内容にエラーが<%= pet_record.errors.count %>件あります</h3>
+    <div class="alert alert-danger">
+      <ul>
+      <% pet_record.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
 	<div class="status-radio-button">
 		<table>
 			<tr>

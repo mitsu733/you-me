@@ -18,8 +18,9 @@ class ApplicationController < ActionController::Base
 	  	end
 	end
 
-	# サインイン時入力する項目
 	protected
+
+	# サインイン時入力する項目
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :pet_name, :email])
 	end

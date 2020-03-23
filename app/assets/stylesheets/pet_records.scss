@@ -5,7 +5,15 @@
 	@import "variables";
 	@import "mixin";
 
-/* _record-parts部分 */
+/* index > _record-parts部分 */
+.about{
+	width: 90%;
+	text-align: center;
+	margin: $margin-center;
+	a{
+		font-size: $big-font-size;
+	}
+}
 .record-box{
 	div{
 		display: flex;
@@ -164,6 +172,10 @@
 			letter-spacing: 0.2em;
 		}
 		.follow-box{
+			text-align: right;
+		}
+		.link{
+			text-align: center;
 		}
 	}
 }

@@ -45,23 +45,32 @@
 
          <!-- フォロー機能 -->
         <tr>
-            <td class="follow-box", align="right">
-                <%= render 'users/follow', user: @pet_record.user %>
+            <% if user_signed_in? %>
+                <td class="follow-box">
+                    <%= render 'users/follow', user: @pet_record.user %>
 
 
-          <!-- いいね機能 -->
-            <span id="likes_buttons_<%= @pet_record.id %>">
-                <%= render 'likes/like', pet_record: @pet_record %>
-            </span>
-            </td>
+              <!-- いいね機能 -->
+                <span id="likes_buttons_<%= @pet_record.id %>">
+                    <%= render 'likes/like', pet_record: @pet_record %>
+                </span>
+                </td>
+            <% end %>
         </tr>
 
         <tr>
             <td>
-                <% if(@pet_record.user_id == current_user.id)%>
-                    <%= link_to "変更", edit_pet_record_path(@pet_record) %> / 
-                    <%= link_to "削除", @pet_record, method: :delete %>
-                <%end%>
+                <% if user_signed_in? %>
+                    <% if(@pet_record.user_id == current_user.id)%>
+                        <%= link_to "きろくの編集", edit_pet_record_path(@pet_record) %> / 
+                        <%= link_to "きろくの削除", @pet_record, method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+                    <%end%>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td class="link">
+                <%= link_to_unless_current  "このきろくの投稿者のページ",  user_path(@pet_record.user.id) %> | <%= link_to_unless_current  "公開されているきろく",  pet_records_path %>
             </td>
         </tr>
 
