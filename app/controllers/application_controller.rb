@@ -1,7 +1,5 @@
 class ApplicationController < ActionController::Base
-
-	before_action :configure_permitted_parameters, if: :devise_controller?
-	before_action :reset_path_info
+	before_action :store_current_location, unless: :devise_or_homes_controller?
 
 	# 検索機能
 	before_action :set_search
@@ -29,18 +27,20 @@ class ApplicationController < ActionController::Base
 
 	# 以下ログイン、ログアウト時の遷移先
 	def after_sign_in_path_for(resource)
-		if session[:is_last_visit_page_pets_records]
-		  return pet_records_path
-		else
-		  return user_path(current_user.id)
-		end
-	end
+			return stored_location_for(resource) || user_path(current_user.id)
+    end
 
 	def after_sign_out_path_for(resource)
 		root_path
 	end
 
-	def reset_path_info
-		session.delete(:is_last_visit_page_pets_records)
-	end
+
+	def store_current_location
+    store_location_for(:user, request.url)
+  end
+
+  def devise_or_homes_controller?
+    devise_controller? || controller_name == 'homes'
+  end
+
 end

@@ -1,9 +1,8 @@
 class PetRecordsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :infinite_scrolling]
-  skip_before_action :reset_path_info, only: [:index]
+  protect_from_forgery
 
   def index
-    session[:is_last_visit_page_pets_records] = true
     @pet_records = PetRecord.where(record_public: true).order(created_at: :desc).page(params[:page]).per(8)
   end
 
@@ -17,9 +16,7 @@ class PetRecordsController < ApplicationController
     if  @pet_record.save
         redirect_to @pet_record
     else
-        @pet_record = PetRecord.new(pet_record_params)
-        @pet_record.user = current_user
-        render "new"
+      render "new"
     end
   end
 

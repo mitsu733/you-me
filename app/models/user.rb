@@ -20,6 +20,14 @@ class User < ApplicationRecord
 
   enum user_status: { "公開"=>0, "非公開"=>1}
 
+  # バリデーション
+  with_options length: { in: 1..100 } do
+    validates :name
+    validates :pet_name
+  end
+
+
+
   # フォロー
   def followed_by?(user)
     passive_relationships.find_by(followed_id: user.id).present?
