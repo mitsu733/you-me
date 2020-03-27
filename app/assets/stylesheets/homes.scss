@@ -6,6 +6,7 @@
    @import "variables";
    @import "mixin";
 
+/* top部分 */
 .enter-box{
   .img-box{
     width: 100%;
@@ -58,7 +59,7 @@
   	  border:{
         @include slim-dashed;
       }
-  	  @include slim-dashed;
+  	  // @include slim-dashed;
       @include transition;
         &:hover, &:focus {
           background-color: $top-rgba;
@@ -66,3 +67,46 @@
     }
   }
 }
+
+/*about部分*/
+.about-box{
+  .about-table{
+    margin: $margin-center;
+    width: 50%;
+    tr,td{
+   line-height:2em;
+   padding: 15px 0;
+   border-bottom:{
+   @include slim-dashed;
+   color: $main-color;
+ }
+    white-space: pre-wrap;
+    p{
+      color: $main-color;
+    }
+}
+    .about-title{
+      font-size: $big-font-size;
+      text-align: center;
+    }
+  }
+  .enter-link{
+    width: 90%;
+    height: auto;
+    padding: 30px;
+    margin: $margin-center;
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

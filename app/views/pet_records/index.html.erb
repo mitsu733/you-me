@@ -1,7 +1,4 @@
-<% if user_signed_in? %>
-  <div class="about-in">
-  </div>
-<% else %>
+<% if user_signed_in? == false %>
   <div class="about">
     <%= link_to "アバウト『YOU □ ME』", about_path %>
   </div>

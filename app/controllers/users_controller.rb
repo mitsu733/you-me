@@ -8,11 +8,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @pet_records = PetRecord.where(user_id: @user).order(created_at: :desc)
-    start_day = @user.created_at
-    day = Time.current
-    @user_continue = (start_day - day).to_i
-    # current_year = Date.today.year
-    # @month = PetRecord.where(user_id: @user, created_at: "2020-03-01".."2020-03-31")
   end
 
   def edit

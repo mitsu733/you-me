@@ -6,13 +6,10 @@
   @import "mixin";
 
 /* index > _record-parts部分 */
-.about-in{
-  width: 90%;
-}
 .about, .enter{
   width: 90%;
   text-align: center;
-  padding: 0 0 30px 0;
+  padding: 30px 0 30px 0;
   margin: $margin-center;
    a{
       padding: 10px;
@@ -140,66 +137,57 @@
 .new-edit-box{
   width: 90%;
   margin: $margin-center;
-  .new-edit-title {
-    width: 80%;
-    padding-bottom: 20px;
-    text-align: center;
-    margin: $margin-center;
-    font-size: $big-font-size;
-    color: $font-sub-color;
-  }
-
   .status-radio-button{
     width: 80%;
     margin: $margin-center;
     text-align: center;
     table{
       margin: $margin-center;
-        position:  relative;
-
+      position:  relative;
       font:{
         size: 20px;
       }
       tr{
         width: 600px;
-
-        th ,td {
+        th {
           padding: 25px 60px;
         }
-        
+        td {
+          padding: 25px 60px;
+        }
         /*ラジオボタン-トイレ*/
         #radio-1-1, #radio-1-2, #radio-1-3{
           display: none;
        }
        #radio-1-1+label::before {
         @include radio-before;
-        top: 25px;
-        left: 190px;
+        top: $side-1;
+        left: $vertical-1;
        }
        #radio-1-2+label::before {
         @include radio-before;
-        top: 25px;
-        right: 222px;
+        top: $side-1;
+        right: $vertical-2;
        }
         #radio-1-3+label::before {
         @include radio-before;
-        top: 25px;
-        right: 80px;
+        top: $side-1;
+        right: $vertical-3;
        }
        #radio-1-1:checked+label::after {
         @include radio-after;
-        top:25px;
-        left: 190px;
+        top: $side-1;
+        left: $vertical-1;
        }
        #radio-1-2:checked+label::after {
         @include radio-after;
-        top:25px;
-        right: 222px;
+        top: $side-1;
+        right: $vertical-2;
        }
        #radio-1-3:checked+label::after {
         @include radio-after;
-        top:25px;
-        right: 80px;
+        top: $side-1;
+        right: $vertical-3;
        }
 
                /*ラジオボタン-おみず*/
@@ -208,33 +196,33 @@
        }
        #radio-2-1+label::before {
         @include radio-before;
-        top: 103px;
-        left: 190px;
+        top:  $side-2;
+        left: $vertical-1;
        }
        #radio-2-2+label::before {
         @include radio-before;
-        top: 103px;
-        right: 222px;
+        top:  $side-2;
+        right: $vertical-2;
        }
         #radio-2-3+label::before {
         @include radio-before;
-        top: 103px;
-        right: 80px;
+        top:  $side-2;
+        right: $vertical-3;
        }
        #radio-2-1:checked+label::after {
         @include radio-after;
-        top:103px;
-        left: 190px;
+        top: $side-2;
+        left: $vertical-1;
        }
        #radio-2-2:checked+label::after {
         @include radio-after;
-        top:103px;
-        right: 222px;
+        top: $side-2;
+        right: $vertical-2;
        }
        #radio-2-3:checked+label::after {
         @include radio-after;
-        top:103px;
-        right: 80px;
+        top: $side-2;
+        right: $vertical-3;
        }
           /*ラジオボタン-ごはん*/
         #radio-3-1, #radio-3-2, #radio-3-3{
@@ -242,33 +230,33 @@
        }
        #radio-3-1+label::before {
         @include radio-before;
-        top: 180px;
-        left: 190px;
+        top:  $side-3;
+        left: $vertical-1;
        }
        #radio-3-2+label::before {
         @include radio-before;
-        top: 180px;
-        right: 222px;
+        top:  $side-3;
+        right: $vertical-2;
        }
         #radio-3-3+label::before {
         @include radio-before;
-        top: 180px;
-        right: 80px;
+        top:  $side-3;
+        right: $vertical-3;
        }
        #radio-3-1:checked+label::after {
         @include radio-after;
-        top:180px;
-        left: 190px;
+        top: $side-3;
+        left: $vertical-1;
        }
        #radio-3-2:checked+label::after {
         @include radio-after;
-        top:180px;
-        right: 222px;
+        top: $side-3;
+        right: $vertical-2;
        }
        #radio-3-3:checked+label::after {
         @include radio-after;
-        top:180px;
-        right: 80px;
+        top: $side-3;
+        right: $vertical-3;
        }
                  /*ラジオボタン-げんき*/
         #radio-4-1, #radio-4-2, #radio-4-3{
@@ -276,33 +264,33 @@
        }
        #radio-4-1+label::before {
         @include radio-before;
-        top: 255px;
-        left: 190px;
+        top:  $side-4;
+        left: $vertical-1;
        }
        #radio-4-2+label::before {
         @include radio-before;
-        top: 255px;
-        right: 222px;
+        top:  $side-4;
+        right: $vertical-2;
        }
         #radio-4-3+label::before {
         @include radio-before;
-        top: 255px;
-        right: 80px;
+        top:  $side-4;
+        right: $vertical-3;
        }
        #radio-4-1:checked+label::after {
         @include radio-after;
-        top:255px;
-        left: 190px;
+        top: $side-4;
+        left: $vertical-1;
        }
        #radio-4-2:checked+label::after {
         @include radio-after;
-        top:255px;
-        right: 222px;
+        top: $side-4;
+        right: $vertical-2;
        }
        #radio-4-3:checked+label::after {
         @include radio-after;
-        top:255px;
-        right: 80px;
+        top: $side-4;
+        right: $vertical-3;
        }
 
 
@@ -404,6 +392,23 @@
     }
     .link{
       text-align: center;
+    }
+    .liked-user{
+      font-size: $small-font-size;
+      color: $main-color;
+    }
+    .image{
+        @include circle;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        padding: 0;
+        margin: $margin-center;
+        text-align: center;
+        border: {
+        @include slim-solid;
+        color: $main-color;
+      }
     }
   }
 }

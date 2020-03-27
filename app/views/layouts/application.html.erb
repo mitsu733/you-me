@@ -12,8 +12,8 @@
   </head>
 
   <body data-turbolinks="false">
-    <header>
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <header>
         <nav>
         <!-- ユーザーログイン済の時のみヘッダー表示 -->
         <div class="title">
@@ -29,6 +29,8 @@
             <li><%= link_to_unless_current  "新しい記録",new_pet_record_path %></li>
              <li><%= link_to_unless_current  "マイページ",  user_path(current_user) %></li>
             <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
+            <li><%= link_to "アバウト", about_path %></li>
+            <li><%= link_to "ホーム", root_path %></li>
             <li>
               <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
             </li>
@@ -42,13 +44,13 @@
           <div class="input-group">
             <%= search.search_field :user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any, class: "form-control", placeholder: "検索" %>
             <span class="input-group-btn">
-              <%= search.submit "検索", class: "btn btn-default" "search" %>
+              <%= search.submit "検索", class: "btn btn-default search" %>
             </span>
           </div>
           <% end %>
         </nav>
-      <% end %>
-    </header>
+      </header>
+    <% end %>
 
       <%= yield %>
 

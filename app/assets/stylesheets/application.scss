@@ -14,61 +14,78 @@
  *= require simple_calendar
  *= require_self
  */
-	@import "bootstrap-sprockets";
-	@import "bootstrap";
-	
-	@import "variables";
-	@import "mixin";
+  @import "bootstrap-sprockets";
+  @import "bootstrap";
+  
+  @import "variables";
+  @import "mixin";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-size: $base-font-size;
-  // color: $font-color;
 }
 
 a {
-	text-decoration: none;
-	color: $font-sub-color;
+  text-decoration: none;
+  color: $font-sub-color;
 }
 
 header{
-	background-color: $main-color;
-	margin-bottom: 30px;
-	color: $font-color;
-	nav{
-		display: flex;
-		.title{
-			width: 200px;
-			padding: 10px;
-			h1{
-				font-size: 30px;
-				margin: 0;
-				text-align: center;
-			}
-			h5{
-				font-size: 15px;
-				text-align: center;
-				margin: 0 auto;
-			}
-		}
-		ul{
-			text-align: center;
-  			padding: 10px 0;
-  			margin: 0 auto;
-			li{
-			  	list-style: none;
-			  	display: inline-block;
-			  	margin: 0 20px;
-			}
-		}
-		.search-input{
-			border: 1px;
-		}
-		.search{
-			border: 1px;
-		}
-	}
+  height: 100px;
+  background-color: $main-color;
+  margin-bottom: 30px;
+  color: $font-color;
+  nav{
+    display: flex;
+    .title{
+      width: 200px;
+      padding: 10px;
+      h1{
+        font-size: 30px;
+        margin: 0;
+        text-align: center;
+        padding-top: 10px;
+      }
+      h5{
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+    ul{
+      text-align: center;
+      margin: 0 auto;
+      width: 60%;
+      li{
+        list-style: none;
+        display: inline-block;
+        margin: 20px 20px 0 20px;
+      }
+    }
+    .input-group{
+      margin: 50px 0 0 10px;
+      width: 80%;
+      .form-control{
+        margin: 0;
+        border-color: $font-sub-color;
+        color: $font-sub-color;
+      }
+      .input-group-btn{
+        padding: 0;
+        margin: 0;
+        .search{
+          margin: 0;
+          background-color: $font-sub-color;
+          color: #fff;
+          border-color: $font-sub-color;
+          &:hover, &:focus {
+            color: $main-color;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
 }
 

@@ -57,14 +57,18 @@
                 </td>
             <% end %>
         </tr>
-        <tr>
-            <td><% @like_users.each do | like | %>
-                <%= link_to user_path(like) do %>
-                <%= attachment_image_tag like, :profile_image, size: "30x30", fallback: "no-image.jpg", class: "image" %></td>
-                <% end %>
-                <% end %>
-        </tr>
-
+        <% if @like_users.empty? == false %>
+          <tr>
+              <td>
+                  <p class="liked-user">  この記録に灯をともしたユーザー</p>
+                  <% @like_users.each do | like | %>
+                  <%= link_to user_path(like) do %>
+                    <%= attachment_image_tag like, :profile_image, size: "50x50", fallback: "no-image.jpg", class: "image" %>
+                    <% end %>
+                  <% end %>
+              </td>
+          </tr>
+        <% end %>
         <tr>
             <td>
                 <% if user_signed_in? %>
