@@ -2,7 +2,7 @@
 <% if record.tags.any? %>
     <% record.tags.each do |tag| %>
       <%= link_to tag_path(tag_id: tag.id) do %>
-        	#<%= tag.tag %>  
+        	#<%= tag.tag %>
       <% end %>
     <% end %>
 <% end %>

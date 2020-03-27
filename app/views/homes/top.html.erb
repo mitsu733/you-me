@@ -1,11 +1,32 @@
-<div class="img-box">
-	<h1>YOU □ ME</h1>
-	<p>記録の置き場</p>
-	<%= link_to "アバウト『YOU □ ME』", about_path %>
+<% if user_signed_in? %>
+  <div class="enter-box">
+    <div class="img-box">
+      <div class="top-font">
+        <p class = "description-in">  あなたと大切なあのこのきろくを残しましょう。</p>
+        <p class ="about" >
+          <%= link_to "アバウト『YOU □ ME』", about_path %>
+        </p>
+    </div>
+  </div>
 </div>
-
-<div class="enter-box">
-	<%= link_to "サインイン", new_user_registration_path %>
-	<%= link_to "ログイン", new_user_session_path %>
-	<%= link_to_unless_current  "公開されている記録",  pet_records_path %>
-</div>
+<% else %>
+  <div class="enter-box">
+    <div class="img-box">
+      <div class="top-font">
+        <p class ="title">
+          YOU □ ME</p>
+        <p class = "description">
+          あなたとわたしのきろくのおきば
+      </p>
+        <p class ="about" >
+          <%= link_to "アバウト『YOU □ ME』", about_path %>
+        </p>
+      </div>
+    </div>
+    <div class="enter-item">
+      <p><%= link_to "サインイン", new_user_registration_path %></p>
+      <p><%= link_to "ログイン", new_user_session_path %></p>
+      <p><%= link_to_unless_current  "公開されている記録",  pet_records_path %></p>
+    </div>
+  </div>
+<% end %>

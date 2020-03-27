@@ -1,37 +1,45 @@
 <div class="record-box-item">
-  <%= link_to(pet_record_path(record)) do %>
-    <ul>
+  <ul>
     <li class="record-image">
-      <%= attachment_image_tag record, :record_image, size: "100x100%" %>
+      <%= attachment_image_tag record, :record_image, size: "100x100%", class: "img" %>
     </li>
-      <li class="date">
+  </ul>
+  <ul>
+    <li class="date">
+      <%= link_to(pet_record_path(record)) do %>
         <%= l(record.created_at.to_date) %>
-      </li>
-      <li class="user-name">
-        <%= link_to_unless_current record.user.name, user_path(record.user.id) %> / 
+      <% end %>
+    </li>
+    <li class="user-pet-name">
+      <%= link_to user_path(record.user.id) do %>
+        <%= record.user.name %> /
         <%= record.user.pet_name %>
-      </li>
-      <li class="record-body">
-        <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 40) %>
-      </li>
-  <% end %><!-- linkのend -->
-
-  <!-- タグ機能 -->
-  <li class="tag">
-    <%= render "pet_records/tag", record: record %>
-
-  <!-- いいね機能 -->
-    <p id="likes_buttons_<%= record.id %>">
+      <% end %>
+    </li>
+  </ul>
+  <ul>
+    <li class="record-body">
+      <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
+    </li>
+</ul>
+<ul>
+    <!-- タグ機能 -->
+    <li class="tag">
+      <%= render "pet_records/tag", record: record %>
+    </li>
+  </ul>
+  <ul>
+    <!-- いいね機能 -->
+    <li id="likes_buttons_<%= record.id %>">
       <%= render 'likes/like', pet_record: record %>
-    </p>
-
-  
-  <span class="pet-stasus">
-    トイレ<%= record.toilet %>
-    お水<%= record.water %>
-    ごはん<%= record.food %>
-    元気<%= record.energy %>
-  </span>
-  </li>
+    </li>
+</ul>
+<ul>
+    <li class="pet-status">
+      トイレ<%= record.toilet %>
+      お水<%= record.water %>
+      ごはん<%= record.food %>
+      元気<%= record.energy %>
+    </li>
   </ul>
 </div>

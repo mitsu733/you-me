@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-	before_action :store_current_location, unless: :devise_or_homes_controller?
+	protect_from_forgery
+	before_action :store_current_location, unless: :devise_or_infinite_scrolling_action?
 
 	# 検索機能
 	before_action :set_search
@@ -27,7 +28,7 @@ class ApplicationController < ActionController::Base
 
 	# 以下ログイン、ログアウト時の遷移先
 	def after_sign_in_path_for(resource)
-			return stored_location_for(resource) || user_path(current_user.id)
+	  return stored_location_for(resource) || pet_records_path
     end
 
 	def after_sign_out_path_for(resource)
@@ -36,11 +37,11 @@ class ApplicationController < ActionController::Base
 
 
 	def store_current_location
-    store_location_for(:user, request.url)
-  end
+      store_location_for(:user, request.url)
+    end
 
-  def devise_or_homes_controller?
-    devise_controller? || controller_name == 'homes'
-  end
+	def devise_or_infinite_scrolling_action?
+	  devise_controller? || action_name == 'infinite_scrolling'
+	end
 
 end

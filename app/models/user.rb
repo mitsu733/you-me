@@ -10,6 +10,7 @@ class User < ApplicationRecord
   # いいね機能
   has_many :likes, dependent: :destroy
   has_many :like_pet_records, through: :likes, source: :pet_record
+
   # フォロー
   has_many :active_relationships, class_name: "UserRelationship", foreign_key: :followed_id
   has_many :followeds, through: :active_relationships, source: :follower

@@ -4,9 +4,16 @@ $main-color:#75b79e;
 $sub-color:#00796B;
 $font-color:#6a8caf;
 $font-sub-color:#CDDC39;
+$user-color:#eef9bf;
+$tag-color:#ffd3b6;
+$like-color: #f76a8c;
+
+
 $rgba: rgba(117,183,158,0.5);
+$top-rgba: rgba(255,230,230,0.5);
 
 
+$record-parts-padding: 0 20px;
 
 /*フォント*/
 $base-font-size: 15px;
@@ -22,3 +29,4 @@ $button: 10px;
 /*ホバーの効果*/
 $box-shadow: 5px 5px 5px 5px rgba(50,0,0,0.2);
 $rgba-hover: rgba(117,183,158,1);
+$img-rgba-hover: rgba(0,0,0,1);

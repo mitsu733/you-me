@@ -1,3 +1,68 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+   @import "variables";
+   @import "mixin";
+
+.enter-box{
+  .img-box{
+    width: 100%;
+    height: 500px;
+    background: linear-gradient(to top, rgba(170, 280, 200, 0.8) 0%, rgba(151, 217, 225, 0.7) 100%),url(top.jpg);
+    background: {
+      size: cover;
+      repeat:  no-repeat;
+      position: center;
+    }
+    .top-font{
+      text-align: center;
+      padding-top: 150px;
+      p{
+        padding: 10px;
+      }
+      .title{
+        font-size: $big-font-size;
+      }
+      .description{
+        font-size: $small-font-size;
+      }
+      .description-in{
+        font-size: $big-font-size;
+        color: $font-color;
+      }
+      .about{
+        a{
+          padding: 10px;
+          color: $font-color;
+          border:{
+          @include slim-dashed;
+          }
+        @include transition;
+          &:hover, &:focus {
+            background-color: $top-rgba;
+          }
+        }
+      }
+    }
+  }
+  .enter-item{
+  	text-align: center;
+  	p{
+  	  margin: 40px;
+    }
+  	a{
+      padding: 10px;
+  	  font-size: $big-font-size;
+  	  border:{
+        @include slim-dashed;
+      }
+  	  @include slim-dashed;
+      @include transition;
+        &:hover, &:focus {
+          background-color: $top-rgba;
+        }
+    }
+  }
+}

@@ -1,7 +1,7 @@
 <div class="show-record-box">
     <table class="record-table">
     	<tr>
-        	<td>
+        	<td class="date-box">
                 <h3>
                 <%= l(@pet_record.created_at.to_date) %>
                 </h3>
@@ -28,7 +28,7 @@
 
 
         <tr>
-            <td>
+            <td class="body-box">
                 <p class="show-body">
                 <%= @pet_record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
                 </p>
@@ -37,7 +37,7 @@
 
         <!-- タグ機能 -->
           <tr>
-            <td>
+            <td class="tag">
                 <%= render "pet_records/tag", record: @pet_record %>
             </td>
           </tr>
@@ -56,6 +56,13 @@
                 </span>
                 </td>
             <% end %>
+        </tr>
+        <tr>
+            <td><% @like_users.each do | like | %>
+                <%= link_to user_path(like) do %>
+                <%= attachment_image_tag like, :profile_image, size: "30x30", fallback: "no-image.jpg", class: "image" %></td>
+                <% end %>
+                <% end %>
         </tr>
 
         <tr>

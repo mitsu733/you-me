@@ -1,0 +1,25 @@
+<% users.each do |user| %>
+  <% if user.user_status == "公開" %>
+        <div class="item-box">
+          <div class="image-box">
+            <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no-image.jpg", class: "image" %>
+              </div>
+        <div class="items">
+        	<%= link_to(user_path(user)) do %>
+                <span class="name">
+                  ひとのなまえ：<%= user.name %><br>
+                  どうぶつのなまえ：<%= user.pet_name %>
+              </span>
+              <span class="follow-user-intoroduction">
+                <%= truncate(user.intoroduction, length: 20) %>
+          </span>
+                    <% end %>
+          </div>
+
+              <!-- フォロー機能 -->
+              <%= render 'users/follow', user: user %>
+        
+        </div>
+
+  <% end %>
+<% end %>

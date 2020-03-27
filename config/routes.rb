@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/search', to: "search#search", as: "search"
 
   get 'users/withdraw', to: 'users#withdraw',as: 'withdraw'
-  resources :users, only: [:show, :edit, :update, :destroy] do
+  resources :users, only: [:index, :show, :edit, :update, :destroy] do
     resource :user_relationships, only: [:create, :destroy]
     get :followed, on: :member
     get :follower, on: :member

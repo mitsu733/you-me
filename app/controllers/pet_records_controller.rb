@@ -1,6 +1,5 @@
 class PetRecordsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :infinite_scrolling]
-  protect_from_forgery
 
   def index
     @pet_records = PetRecord.where(record_public: true).order(created_at: :desc).page(params[:page]).per(8)
@@ -22,6 +21,7 @@ class PetRecordsController < ApplicationController
 
   def show
     @pet_record = PetRecord.find(params[:id])
+    @like_users = @pet_record.like_users
   end
 
   def edit

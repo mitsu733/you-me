@@ -1,30 +1,30 @@
 <% if(record.user.user_status == "公開")&&(record.record_public == true)%>
     <div class="item-box">
-    	<%= link_to(pet_record_path(record)) do %>
-		  	<div>
-	          <%= attachment_image_tag record, :record_image, size: "100x100", class: "image" %>
-	      	</div>
-	      	<ul class="items">
-	      		<li class="like-tag-date">
-	    			<%= l(record.created_at.to_date) %>
-	    		</li>
-		      	<li class="name">
-		         <span> ひとのなまえ：</span><%= record.user.name %> / 
-		          <span>どうぶつのなまえ：</span><%= record.user.pet_name %>
-		        </li>
-		        <li class="like-tag-body">
-		          <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 30) %>
-		        </li>
-	     	<% end %><!-- linkのend -->
-<li class="tag">
-     	<!-- タグ機能 -->
-    	<%= render "pet_records/tag", record: record %>
-</li>
-	    <!-- いいね機能 -->
-	    <li id="likes_buttons_<%= record.id %>">
-	      <%= render 'likes/like', pet_record: record %>
-	    </li>
-    </ul>
-</div>
+        <div class = "image-box">
+          <%= attachment_image_tag record, :record_image, size: "100x100", fallback: "no-image.jpg", class: "image" %>
+        </div>
+        <div class="items">
+          <%= link_to(pet_record_path(record)) do %>
+            <p class="like-tag-date">
+              <%= l(record.created_at.to_date) %>
+            </p>
+            <span class="name">
+              ひとのなまえ：<%= record.user.name %> <br>
+              どうぶつのなまえ：<%= record.user.pet_name %>
+            </span>
+            <span class="like-tag-body">
+              <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 20) %>
+            </span>
+           <% end %>
+         <!-- タグ機能 -->
+         <div class="tag">
+          <%= render "pet_records/tag", record: record %>
+         </div>
+       </div>
+         <!-- いいね機能 -->
+         <div id="likes_buttons_<%= record.id %>">
+           <%= render 'likes/like', pet_record: record %>
+         </div>
+     </div>
 <% end %>
 

@@ -12,6 +12,7 @@ class PetRecord < ApplicationRecord
 
 	# いいね機能のアソシエーション
 	has_many :likes, dependent: :destroy
+	has_many :like_users, through: :likes, source: :user
 
 	# タグ機能のアソシエーション
 	has_many :record_tags, dependent: :destroy

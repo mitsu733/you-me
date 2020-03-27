@@ -6,7 +6,7 @@
 					プロフィール非公開<br>（記録の公開なし）
 				<% end %>
 			</p>
-			<%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100",class: "image" %>
+			<%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100", fallback: "no-image.jpg", class: "image" %>
 			<%if @user.id == current_user.id %>
 				<%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x edit"></i><% end %>
 			<% end %>
@@ -27,9 +27,10 @@
 			<p><%= render 'users/follow', user: @user %></p>
 
 			<p class="follow-font">
-			<%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user),  class: "btn btn-default" %>
-			<%= link_to "フォロワー：#{ @user.followeds.count }", followed_user_path(@user),  class: "btn btn-default" %>
+			<%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user.id),  class: "btn btn-default" %>
+			<%= link_to "フォロワー：#{ @user.followeds.count }", followed_user_path(@user.id),  class: "btn btn-default" %>
 			</p>
+			<%= @user_continue %>
 		</div>
 	</div>
 
@@ -42,7 +43,8 @@
 				 	 	<% records.each do |record| %>
 						    <span class="calendar-record">
 						    	<%= link_to pet_record_path(record) do %>
-						      		<%= record.energy %>
+						      		<p><%= record.energy %>： <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 8) %>
+						      		</p>
 						      	<% end %>
 						    </span>
 					  	<% end %>
@@ -63,9 +65,9 @@
 		<% end %>
 
 		<div class="col-lg-2">
-			<!-- <%#= @record_dates %> -->
+          <div class="date">
+          	<%#= @month %>
 			<% @pet_records.each do |record| %>
-					
 				<%= link_to(pet_record_path(record)) do %>
 					<table>
 						<tr>
@@ -74,6 +76,7 @@
 					</table>
 				<% end %>
 			<% end %>
+		</div>
 		</div>
 	</div>
 </div>

@@ -3,58 +3,82 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-	@import "variables";
-	@import "mixin";
+  @import "variables";
+  @import "mixin";
 
 .box{
-	width: 90%;
-	margin: $margin-center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items:flex-start;
-	.item-box{
-		width: 30%;
-		height: 200px;
-		padding: 10px;
-		margin: 10px;
-		display: flex;
-		align-items: center;
-		border:{
-			@include main-border;
-			color: $main-color;
-		}
-		li{
-			margin-bottom: 10px;
-		}
-		.image{
-			width: 100px;
-			height: 100px;
-			object-fit: cover;
-		    @include circle;
-		    border:{
-				@include main-border;
-				color: $main-color;
-			}
-		}
-		.items{
-			list-style: none;
-			padding: 15px;
-
-			.name{
-				font-size: $base-font-size;
-				span{
-					font-size: $small-font-size;
-				}
-			}
-			.like-tag-body{
-				padding: 10px;
-				font-size: $small-font-size;
-			}
-			.tag{
-				display: inline;
-			}
-		}
-	}
+  width: 90%;
+  margin: $margin-center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items:flex-start;
+  .item-box{
+    width: 40%;
+    height: 200px;
+    margin: 20px;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    border:{
+      @include main-border;
+      color: $main-color;
+    }
+    @include transition;
+      &:hover, &:focus {
+        border: none;
+        box-shadow: $box-shadow;
+        background: $user-color;
+        .items{
+          a {
+            color: $main-color;
+          }
+        }
+          .tag{
+            a{
+              color: $tag-color;
+            }
+        }
+      }
+    word-wrap:break-word;
+    .image-box{
+      width: 100px;
+      height: 100px;
+      .image{
+        object-fit: cover;
+        @include circle;
+        border:{
+        @include main-border;
+        color: $main-color;
+        }
+      }
+    }
+    .items{
+      width: 65%;
+      height: auto;
+      padding: 15px;
+      box-sizing: border-box;
+      .name{
+        font-size: $small-font-size;
+        display: block;
+      }
+      .like-tag-body{
+        padding: 0;
+        margin: 5px 0;
+        font-size: $small-font-size;
+        display: block;
+      }
+    }
+      .tag{
+        word-wrap:break-word;
+        a{
+          padding: 0 2px 0 0;
+          font-size: $small-font-size;
+        }
+      }
+   }
 }
 

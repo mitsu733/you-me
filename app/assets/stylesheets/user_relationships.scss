@@ -3,4 +3,20 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-@import "follow";
+  @import "variables";
+  @import "mixin";
+  @import "like_tag";
+
+.box{
+ .item-box{
+  .items{
+    .follow-user-intoroduction{
+        a{
+          margin: 10px;
+          font-size: $small-font-size;
+        }
+      }
+    }
+  }
+}
+
