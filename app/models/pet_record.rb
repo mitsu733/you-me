@@ -1,13 +1,9 @@
 class PetRecord < ApplicationRecord
 
 	# バリデーション
-	with_options presence: true do
-	    validates :toilet
-	    validates :water
-	    validates :food
-	    validates :energy
-	end
-
+	validates :name, length: { in: 1..80 }
+	validates :pet_name, length: { maximum: 80 }
+	validates :intoroduction, length: { maximum: 200 }
  	validate :record_public_conditions
 
 	# いいね機能のアソシエーション
@@ -50,6 +46,7 @@ class PetRecord < ApplicationRecord
 	      pet_record.tags << tag
 	    end
 	end
+
 
 	def record_public_conditions
 	 	if body.blank? && record_image.blank? && record_public == true
