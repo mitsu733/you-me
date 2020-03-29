@@ -2,7 +2,7 @@
   <div class="enter-box">
     <div class="img-box">
       <div class="top-font">
-        <p class = "description-in">  あなたと大切なあのこのきろくを残しましょう。</p>
+        <p class = "description-in">  あなたの大切なこのきろくを残しましょう。</p>
         <p class ="about" >
           <%= link_to "アバウト『YOU □ ME』", about_path %>
         </p>
@@ -26,7 +26,7 @@
     <div class="enter-item">
       <p><%= link_to "サインイン", new_user_registration_path %></p>
       <p><%= link_to "ログイン", new_user_session_path %></p>
-      <p><%= link_to_unless_current  "公開されている記録",  pet_records_path %></p>
+      <p><%= link_to_unless_current  "公開されているきろく",  pet_records_path %></p>
     </div>
   </div>
 <% end %>

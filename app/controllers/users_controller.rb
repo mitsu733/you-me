@@ -6,12 +6,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @pet_records = PetRecord.where(user_id: @user).order(created_at: :desc)
+    user = User.find(params[:id])
+    if user.user_status == "公開" || user.id == current_user.id
+      @user = user
+      @pet_records = PetRecord.where(user_id: @user).order(created_at: :desc)
+    else
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   def edit
-  	@user = User.find(current_user.id)
+    user = User.find(params[:id])
+    if user.id == current_user.id
+  	  @user = user
+    else
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   def update
@@ -30,11 +40,21 @@ class UsersController < ApplicationController
   end
 
   def followed
-    @users = current_user.followeds
+    user = User.find(params[:id])
+    if user.user_status == "公開" || user.id == current_user.id
+      @users = user.followeds
+    else
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   def follower
-    @users = current_user.followers
+    user = User.find(params[:id])
+    if user.user_status == "公開" || user.id == current_user.id
+      @users = user.followers
+    else
+      redirect_back(fallback_location: root_url)
+    end
    end
 
 

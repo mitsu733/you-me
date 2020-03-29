@@ -1,5 +1,5 @@
 class PetRecordsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show, :infinite_scrolling]
+  before_action :authenticate_user!, except: [:index, :infinite_scrolling]
 
   def index
     @pet_records = PetRecord.where(record_public: true).order(created_at: :desc).page(params[:page]).per(8)
@@ -20,12 +20,22 @@ class PetRecordsController < ApplicationController
   end
 
   def show
-    @pet_record = PetRecord.find(params[:id])
-    @like_users = @pet_record.like_users
+    pet_record = PetRecord.find(params[:id])
+    if pet_record.user.user_status == "公開" && pet_record.record_public == true || pet_record.user_id == current_user.id
+      @pet_record = pet_record
+      @like_users = @pet_record.like_users
+    else
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   def edit
-    @pet_record = PetRecord.find(params[:id])
+    pet_record = PetRecord.find(params[:id])
+    if pet_record.user_id == current_user.id
+      @pet_record = pet_record
+    else
+      redirect_back(fallback_location: root_url)
+    end
   end
 
   def update
@@ -34,7 +44,6 @@ class PetRecordsController < ApplicationController
     if  @pet_record.update(pet_record_params)
         redirect_to pet_record_path(@pet_record)
     else
-        @pet_record = PetRecord.find(params[:id])
         render "edit"
     end
   end

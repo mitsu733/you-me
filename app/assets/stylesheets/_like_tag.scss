@@ -23,6 +23,7 @@
     align-content: flex-start;
     flex-wrap: nowrap;
     justify-content: space-around;
+    overflow: scroll;
     border:{
       @include main-border;
       color: $main-color;
@@ -49,21 +50,28 @@
       height: 100px;
       .image{
         object-fit: cover;
-        @include circle;
         border:{
+        radius: $record;
         @include main-border;
         color: $main-color;
         }
       }
     }
     .items{
-      width: 65%;
+      width: 100%;
       height: auto;
       padding: 15px;
       box-sizing: border-box;
       .name{
         font-size: $small-font-size;
         display: block;
+        border-bottom:{
+          @include slim-dashed;
+          color: $font-sub-color;
+        }
+      }
+      .like-tag-date{
+        padding: 10px 0 0 0;
       }
       .like-tag-body{
         padding: 0;

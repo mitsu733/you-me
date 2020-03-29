@@ -37,6 +37,7 @@ header{
   background-color: $main-color;
   margin-bottom: 30px;
   color: $font-color;
+  overflow: scroll;
   nav{
     display: flex;
     .title{

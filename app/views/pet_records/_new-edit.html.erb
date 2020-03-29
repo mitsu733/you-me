@@ -16,11 +16,11 @@
 			<tr>
 			  	<th>トイレ</th>
 				<td>
-				<%= f.radio_button :toilet, "×", id: "radio-1-1" %>
+				<%= f.radio_button :toilet, "×" , id: "radio-1-1" %>
 				<%= f.label "×", for: "radio-1-1" %>
 				</td>
 				<td>
-				<%= f.radio_button :toilet, "△", id: "radio-1-2" %>
+				<%= f.radio_button :toilet, "△", id: "radio-1-2", :checked => true %>
 				<%= f.label "△", for: "radio-1-2" %>
 				</td>
 				<td>
@@ -36,7 +36,7 @@
 				<%= f.label"×", for: "radio-2-1" %>
 				</td>
 				<td>
-				<%= f.radio_button :water, "△", id: "radio-2-2" %>
+				<%= f.radio_button :water, "△", id: "radio-2-2", :checked => true %>
 				<%= f.label"△", for: "radio-2-2" %>
 				</td>
 				<td>
@@ -51,7 +51,7 @@
 			 	<%= f.label"×", for: "radio-3-1" %>
 			 	</td>
 			 	<td>
-			 	<%= f.radio_button :food, "△", id: "radio-3-2" %>
+			 	<%= f.radio_button :food, "△", id: "radio-3-2", :checked => true %>
 			 	<%= f.label"△", for: "radio-3-2" %>
 			 	</td>
 			 	<td>
@@ -63,7 +63,7 @@
 		  	<th>げんき</th>
 				<td><%= f.radio_button :energy, "×", id: "radio-4-1" %>
 				<%= f.label"×", for: "radio-4-1" %></td>
-				<td><%= f.radio_button :energy, "△", id: "radio-4-2" %>
+				<td><%= f.radio_button :energy, "△", id: "radio-4-2", :checked => true %>
 				<%= f.label"△", for: "radio-4-2" %></td>
 				<td><%= f.radio_button :energy, "◯", id: "radio-4-3" %>
 			 	<%= f.label"◯", for: "radio-4-3" %></td>
@@ -80,10 +80,10 @@
 		  	<% if current_user.user_status == "非公開" %>
 		  	  <%= "非公開"%>
 			<% else %>
-		  	  <%= f.radio_button :record_public, :true %>
-			  <%= f.label(:record_public, :公開) %>
-			  <%= f.radio_button :record_public, :false %>
-			  <%= f.label(:record_public, :非公開) %>
+		  	  <%= f.radio_button :record_public, :true, id: "radio-5-1" %>
+			  <%= f.label :公開, for: "radio-5-1" %>
+			  <%= f.radio_button :record_public, :false, id: "radio-5-2" %>
+			  <%= f.label :非公開, for: "radio-5-2" %>
 			<% end %>
 		</div>
 			 <%= f.submit "記録", class: "btn btn-default record-btn" %>

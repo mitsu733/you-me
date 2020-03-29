@@ -1,19 +1,19 @@
 <% if(record.user.user_status == "公開")&&(record.record_public == true)%>
     <div class="item-box">
         <div class = "image-box">
-          <%= attachment_image_tag record, :record_image, size: "100x100", fallback: "no-image.jpg", class: "image" %>
+          <%= attachment_image_tag record, :record_image, size: "100x100", class: "image" %>
         </div>
         <div class="items">
           <%= link_to(pet_record_path(record)) do %>
-            <p class="like-tag-date">
-              <%= l(record.created_at.to_date) %>
-            </p>
             <span class="name">
               ひとのなまえ：<%= record.user.name %> <br>
               どうぶつのなまえ：<%= record.user.pet_name %>
             </span>
+            <p class="like-tag-date">
+              <%= l(record.created_at.to_date) %>
+            </p>
             <span class="like-tag-body">
-              <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 20) %>
+              <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 40) %>
             </span>
            <% end %>
          <!-- タグ機能 -->

@@ -8,7 +8,6 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
   </head>
 
   <body data-turbolinks="false">
@@ -28,15 +27,15 @@
             <li><%= link_to_unless_current  "いいね", likes_path %></li>
             <li><%= link_to_unless_current  "新しい記録",new_pet_record_path %></li>
              <li><%= link_to_unless_current  "マイページ",  user_path(current_user) %></li>
-            <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
-            <li><%= link_to "アバウト", about_path %></li>
-            <li><%= link_to "ホーム", root_path %></li>
-            <li>
-              <%= link_to_unless_current  "公開されている記録",  pet_records_path %>
+             <li>
+              <%= link_to_unless_current  "公開されているきろく",  pet_records_path %>
             </li>
             <li>
               <%= link_to_unless_current  "公開しているユーザー",  users_path %>
             </li>
+            <li><%= link_to_unless_current  "ログアウト",  destroy_user_session_path, method: :delete  %></li>
+            <li><%= link_to "アバウト", about_path %></li>
+            <li><%= link_to "ホーム", root_path %></li>
           </ul>
 
           <!-- 検索機能 -->

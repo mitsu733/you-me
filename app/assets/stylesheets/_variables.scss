@@ -8,12 +8,9 @@ $user-color:#eef9bf;
 $tag-color:#ffd3b6;
 $like-color: #f76a8c;
 
-
+/*透け感のある色*/
 $rgba: rgba(117,183,158,0.5);
 $top-rgba: rgba(255,230,230,0.5);
-
-
-$record-parts-padding: 0 20px;
 
 /*フォント*/
 $base-font-size: 15px;
@@ -24,7 +21,7 @@ $big-font-size: 20px;
 $margin-center: 0 auto;
 
 /* 角丸 */
-$button: 10px;
+$record: 10px;
 
 /*ホバーの効果*/
 $box-shadow: 5px 5px 5px 5px rgba(50,0,0,0.2);
@@ -37,10 +34,14 @@ $side-1: 25px;
 $side-2: 103px;
 $side-3: 180px;
 $side-4: 255px;
+$side-5: 670px;
+
 /*縦 - 列(左から)*/
 $vertical-1: 190px;
 $vertical-2: 222px;
 $vertical-3: 80px;
+$vertical-4: 605px;
+$vertical-5: 683px;
 
 
 

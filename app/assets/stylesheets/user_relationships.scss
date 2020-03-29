@@ -8,13 +8,24 @@
   @import "like_tag";
 
 .box{
- .item-box{
-  .items{
-    .follow-user-intoroduction{
-        a{
-          margin: 10px;
-          font-size: $small-font-size;
+  .item-box{
+    .image-box{
+      .user-image{
+        object-fit: cover;
+        @include circle;
+        border:{
+        @include main-border;
+        color: $main-color;
         }
+      }
+    }
+    .items{
+      .follow-user-intoroduction{
+        padding: 10px;
+        font-size: $small-font-size;
+      }
+      .follow{
+        margin-top: 10px;
       }
     }
   }

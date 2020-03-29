@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery
 	before_action :store_current_location, unless: :devise_or_infinite_scrolling_action?
+	before_action :configure_permitted_parameters, if: :devise_controller?
 
 	# 検索機能
 	before_action :set_search
@@ -22,6 +23,7 @@ class ApplicationController < ActionController::Base
 	# サインイン時入力する項目
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :pet_name, :email])
+		devise_parameter_sanitizer.permit(:account_update, keys: [:name, :pet_name, :email])
 	end
 
 	private

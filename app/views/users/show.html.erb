@@ -28,7 +28,7 @@
 
 			<p class="follow-font">
 			<%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user.id),  class: "btn btn-default" %>
-			<%= link_to "フォロワー：#{ @user.followeds.count }", followed_user_path(@user.id),  class: "btn btn-default" %>
+			<%= link_to "フォロー：#{ @user.followeds.count }", followed_user_path(@user.id),  class: "btn btn-default" %>
 			</p>
 			<%= @user_continue %>
 		</div>

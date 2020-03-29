@@ -26,6 +26,11 @@
             </td>
         </tr>
 
+        <% if @pet_record.record_public == false %>
+          <tr>
+            <td class="record_public">＊この記事は非公開です。＊</td>
+          </tr>
+        <% end %>
 
         <tr>
             <td class="body-box">
@@ -41,20 +46,14 @@
                 <%= render "pet_records/tag", record: @pet_record %>
             </td>
           </tr>
-
-
-         <!-- フォロー機能 -->
         <tr>
             <% if user_signed_in? %>
-                <td class="follow-box">
-                    <%= render 'users/follow', user: @pet_record.user %>
-
-
+              <td class="like">
               <!-- いいね機能 -->
                 <span id="likes_buttons_<%= @pet_record.id %>">
                     <%= render 'likes/like', pet_record: @pet_record %>
                 </span>
-                </td>
+              </td>
             <% end %>
         </tr>
         <% if @like_users.empty? == false %>
@@ -62,8 +61,10 @@
               <td>
                   <p class="liked-user">  この記録に灯をともしたユーザー</p>
                   <% @like_users.each do | like | %>
+                  <% if like.user_status == "公開" %>
                   <%= link_to user_path(like) do %>
                     <%= attachment_image_tag like, :profile_image, size: "50x50", fallback: "no-image.jpg", class: "image" %>
+                    <% end %>
                     <% end %>
                   <% end %>
               </td>
@@ -75,7 +76,7 @@
                     <% if(@pet_record.user_id == current_user.id)%>
                         <%= link_to "きろくの編集", edit_pet_record_path(@pet_record) %> / 
                         <%= link_to "きろくの削除", @pet_record, method: :delete, "data-confirm" => "本当に削除しますか？"  %>
-                    <%end%>
+                    <% end %>
                 <% end %>
             </td>
         </tr>
