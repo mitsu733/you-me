@@ -1,9 +1,6 @@
 class PetRecord < ApplicationRecord
 
 	# バリデーション
-	validates :name, length: { in: 1..80 }
-	validates :pet_name, length: { maximum: 80 }
-	validates :intoroduction, length: { maximum: 200 }
  	validate :record_public_conditions
 
 	# いいね機能のアソシエーション
