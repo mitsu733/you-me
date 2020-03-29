@@ -47,7 +47,7 @@ class PetRecord < ApplicationRecord
 	    end
 	end
 
-
+    # 記録投稿時のバリデーション
 	def record_public_conditions
 	 	if body.blank? && record_image.blank? && record_public == true
 	 	   errors.add(:record_public, "をするためには文字か画像の入力が必要です")

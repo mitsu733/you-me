@@ -59,7 +59,6 @@
   	  border:{
         @include slim-dashed;
       }
-  	  // @include slim-dashed;
       @include transition;
         &:hover, &:focus {
           background-color: $top-rgba;
@@ -74,17 +73,17 @@
     margin: $margin-center;
     width: 50%;
     tr,td{
-   line-height:2em;
-   padding: 15px 0;
-   border-bottom:{
-   @include slim-dashed;
-   color: $main-color;
- }
-    white-space: pre-wrap;
-    p{
-      color: $main-color;
+      line-height:2em;
+      padding: 15px 0;
+      border-bottom:{
+        @include slim-dashed;
+        color: $main-color;
+      }
+      white-space: pre-wrap;
+      p{
+        color: $main-color;
+      }
     }
-}
     .about-title{
       font-size: $big-font-size;
       text-align: center;
@@ -98,15 +97,3 @@
     text-align: center;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-

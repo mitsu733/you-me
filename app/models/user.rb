@@ -34,5 +34,4 @@ class User < ApplicationRecord
     passive_relationships.find_by(followed_id: user.id).present?
   end
 
-  
 end
