@@ -11,7 +11,7 @@ YOU□MEは文章や写真等で記録をつけるアプリです。
 - 画像アップロード  
 Gem refile  
 mini_magick
-- ページネーション機能  　
+- ページネーション機能  
 Gem kaminari  
 js
 - いいね機能（灯をともす）
