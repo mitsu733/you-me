@@ -6,14 +6,13 @@ YOU□MEは文章や写真等で記録をつけるアプリです。
 ブログやツイッターのように文章、写真を公開することもできるし、自分が振り返る為のきろくや日記として公開せずに使うこともできます。  
 
 ### 機能一覧
-- ログイン機能
-Gem devise
+- ログイン機能 Gem devise
 - 投稿機能
-- 画像アップロード
-Gem refile
-refile-mini_magick
-- ページネーション機能
-Gem kaminari
+- 画像アップロード  
+Gem refile  
+mini_magick
+- ページネーション機能  　
+Gem kaminari  
 js
 - いいね機能（灯をともす）
 - タグ  
