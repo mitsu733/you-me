@@ -5,22 +5,39 @@
 YOU□MEは文章や写真等で記録をつけるアプリです。
 ブログやツイッターのように文章、写真を公開することや、自分が振り返る為のきろくや日記として公開せずに使うこともできます。  
 
-### 機能一覧
+### アプリの機能一覧
 - ログイン機能  
-Gem devise
 - 投稿機能
 - 画像アップロード  
-Gem refile  
-mini_magick
 - ページネーション機能  
-Gem kaminari  
-js
 - いいね機能（灯をともす）
 - タグ  
 - 検索
+### 使用してる技術一覧
+##### サーバサイド
+ruby 2.5.7  
+rails  5.2.4
+##### Gem
+devise（ログイン機能）   
+refile(画像アップロード)  
+refile-mini_magick(画像投稿機能)  
+pry-byebug(デバッグ)  
+ransack(検索)  
+js(非同期通信)(無限スクロール)  
+kaminari(ページネーション)  
+simple_calendar（カレンダー）  
+rails-i18n（言語の変換）  
+##### フロントエンド
+CSSフレームワーク(bootstrap-sass)  
+Flexbox(cssレウアウト)  
+sass-rails(SASS)  
+##### 本番サーバ環境
+AWS(EC2,RDS,EIP)
+##### データベース
+MySQL
+##### WEBサーバ
+Nginx
 
-### 開発環境
-- ruby on rails
 
 ### 使い方
  
