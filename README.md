@@ -30,7 +30,7 @@ rails-i18n（言語の変換）
 ##### フロントエンド
 CSSフレームワーク(bootstrap-sass)  
 Flexbox(cssレウアウト)  
-sass-rails(SASS)  
+sass-rails(SCSS)  
 ##### 本番サーバ環境
 AWS(EC2,RDS,EIP)
 ##### データベース
