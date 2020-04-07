@@ -1,24 +1,85 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# YOU□ME
 
-Things you may want to cover:
+#### 闘病中のペットのきろくをつけることを目的としたアプリです。
+YOU□MEは文章や写真等で記録をつけるアプリです。
+ブログやツイッターのように文章、写真を公開することや、自分が振り返る為のきろくや日記として公開せずに使うこともできます。  
 
-* Ruby version
+### アプリの機能一覧
+- ログイン機能  
+- 投稿機能
+- 画像アップロード  
+- ページネーション機能  
+- いいね機能（灯をともす）
+- タグ  
+- 検索
+### 使用してる技術一覧
+##### サーバサイド
+ruby 2.5.7  
+rails  5.2.4
+##### Gem
+devise（ログイン機能）   
+refile(画像アップロード)  
+refile-mini_magick(画像投稿機能)  
+pry-byebug(デバッグ)  
+ransack(検索)  
+js(非同期通信)(無限スクロール)  
+kaminari(ページネーション)  
+simple_calendar（カレンダー）  
+rails-i18n（言語の変換）  
+##### フロントエンド
+CSSフレームワーク(bootstrap-sass)  
+Flexbox(cssレウアウト)  
+sass-rails(SCSS)  
+##### 本番サーバ環境
+AWS(EC2,RDS,EIP)
+##### データベース
+MySQL
+##### WEBサーバ
+Nginx
 
-* System dependencies
 
-* Configuration
+### 使い方
+ 
+- 『トイレ』『おみず』『ごはん』『元気』の４つの項目についてラジオボタンの○△✕から選択して手軽に記録をつけることができます。
+また、写真や文章の記録もつけることができます。  
+<記録投稿画面>
+![新規記録の作成](readme-image/投稿画面.jpeg)
 
-* Database creation
+- つけたきろくの写真や文章の公開、非公開の選択ができます。(上の図『記録投稿画面』下部にあるボタンで選択)  
+<非公開に設定された時の記録の詳細画面>
+![記録の非公開](readme-image/記録の非公開２.jpeg)
+<『公開されているきろく』画面から表示が消えます>
+![記録の非公開](readme-image/記録の非公開３.jpeg)
 
-* Database initialization
 
-* How to run the test suite
+- ユーザー情報の公開、非公開の選択ができます。  
+<非公開に設定>
+![ユーザーの非公開](readme-image/ユーザーの非公開２.jpeg)
+<非公開に設定された時のマイページ>
+![ユーザーの非公開](readme-image/ユーザーの非公開マイページ.jpg)
+<『公開しているユーザー』画面から表示が消えます>
+![ユーザーの非公開](readme-image/ユーザーの非公開３.jpeg)
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+- 気に入った記録には灯をともすことができます。  
+<灯をともす>
+![灯](readme-image/灯１.jpeg)
+<（ユーザーが公開状態になっている場合は）灯をともした記録にともしたユーザーのアイコンが出ます>
+![灯](readme-image/灯３.jpeg)
 
-* ...
+- 気に入ったユーザーをフォローできます。  
+<他のユーザーのページ等からフォローが可能>
+![フォロー](readme-image/フォロー.jpeg)
+
+- 検索機能やタグ機能で目的のきろくを探せます。  
+<タグ機能>
+![タグ](readme-image/タグ.jpeg)
+<検索機能>
+![検索](readme-image/検索.jpeg)
+
+#### アプリの名前の由来
+YOUは公開された記録をみる”あなた”であり、ペットの”きみ”のこと、   
+MEは記録をつける本人の”私”です。  
+その間には、何が入ってくるでしょう。
+あなたと私の間に少しでも楽しさや嬉しさが入るよう、情報共有したり、向き合ったり…このアプリがその助けになればと思います。
