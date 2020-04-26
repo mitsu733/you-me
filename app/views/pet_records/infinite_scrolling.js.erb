@@ -1,6 +1,5 @@
-if("<%=@next_page%>" != "last"){
-	$(".record-box > div").append("<%= escape_javascript(render 'pet_records/index', pet_records: @pet_records) %>")
-  	$(".loader-container").addClass("d-none")
-}else{
-}
+if ("<%=@next_page%>" != "last") {
+    $(".record-box > div").append("<%= escape_javascript(render 'pet_records/index', pet_records: @pet_records) %>")
+    $(".loader-container").addClass("d-none")
+} else {}
 $(".record-box").attr('data-page', "<%=@next_page%>")

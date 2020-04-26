@@ -2,94 +2,101 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-   @import "variables";
-   @import "mixin";
+@import "variables";
+@import "mixin";
 
 /* top部分 */
-.enter-box{
-  .img-box{
+.enter-box {
+  .img-box {
     width: 100%;
     height: 500px;
-    background: linear-gradient(to top, rgba(170, 280, 200, 0.8) 0%, rgba(151, 217, 225, 0.7) 100%),url(top.jpg);
+    background-image: linear-gradient(
+        to top,
+        rgba(170, 280, 200, 0.8) 0%,
+        rgba(151, 217, 225, 0.7) 100%
+      ),
+      image-url("top.jpg");
     background: {
       size: cover;
-      repeat:  no-repeat;
+      repeat: no-repeat;
       position: center;
     }
-    .top-font{
+    .top-font {
       text-align: center;
       padding-top: 150px;
-      p{
+      p {
         padding: 10px;
       }
-      .title{
+      .title {
         font-size: $big-font-size;
       }
-      .description{
+      .description {
         font-size: $small-font-size;
       }
-      .description-in{
+      .description-in {
         font-size: $big-font-size;
         color: $font-color;
       }
-      .about{
-        a{
+      .about {
+        a {
           padding: 10px;
           color: $font-color;
-          border:{
-          @include slim-dashed;
+          border: {
+            @include slim-dashed;
           }
-        @include transition;
-          &:hover, &:focus {
+          @include transition;
+          &:hover,
+          &:focus {
             background-color: $top-rgba;
           }
         }
       }
     }
   }
-  .enter-item{
-  	text-align: center;
-  	p{
-  	  margin: 40px;
+  .enter-item {
+    text-align: center;
+    p {
+      margin: 40px;
     }
-  	a{
+    a {
       padding: 10px;
-  	  font-size: $big-font-size;
-  	  border:{
+      font-size: $big-font-size;
+      border: {
         @include slim-dashed;
       }
       @include transition;
-        &:hover, &:focus {
-          background-color: $top-rgba;
-        }
+      &:hover,
+      &:focus {
+        background-color: $top-rgba;
+      }
     }
   }
 }
 
 /*about部分*/
-.about-box{
-  .about-table{
+.about-box {
+  .about-table {
     margin: $margin-center;
     width: 50%;
-    tr,td{
-      line-height:2em;
+    tr,
+    td {
+      line-height: 2em;
       padding: 15px 0;
-      border-bottom:{
+      border-bottom: {
         @include slim-dashed;
         color: $main-color;
       }
       white-space: pre-wrap;
-      p{
+      p {
         color: $main-color;
       }
     }
-    .about-title{
+    .about-title {
       font-size: $big-font-size;
       text-align: center;
     }
   }
-  .enter-link{
+  .enter-link {
     width: 90%;
     height: auto;
     padding: 30px;

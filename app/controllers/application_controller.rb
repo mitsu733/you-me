@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 		else
 			search_params = params[:q][:user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any]
 			if params[:q][:s].nil?
-				params[:q][:user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any] = params[:q][:user_name_or_user_pet_name_or_user_intoroduction_or_body_cont_any].split(/[\p{blank}\s]+/)
+				search_params = search_params.split(/[\p{blank}\s]+/)
 			end
 	  		@search = PetRecord.ransack(params[:q])
 	  	end

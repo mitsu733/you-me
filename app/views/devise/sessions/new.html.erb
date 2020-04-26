@@ -1,36 +1,35 @@
 <div class="user-edit">
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <%= flash[:alert]  %>
-
-  <table>
-    <tr>
-      <td>
-        <%= f.label :"ひとのなまえ" %><br />
-        <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.label :"パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= f.submit "ログイン", class: "btn btn-default user-btn" %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= link_to "サインイン", new_user_registration_path %>
-      </td>
-    </tr>
-    <tr>
-      <td><%= link_to "ホーム", root_path %></td>
-    </tr>
-  </table>
-  <% end %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= flash[:alert]  %>
+      <table>
+          <tr>
+              <td>
+                  <%= f.label :"ひとのなまえ" %><br />
+                  <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <%= f.label :"パスワード" %><br />
+                  <%= f.password_field :password, autocomplete: "current-password" %>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <%= f.submit "ログイン", class: "btn btn-default user-btn" %>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <%= link_to "サインイン", new_user_registration_path %>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <%= link_to "ホーム", root_path %>
+              </td>
+          </tr>
+      </table>
+    <% end %>
 </div>
-
 <% render "devise/shared/links" %>

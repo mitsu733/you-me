@@ -3,14 +3,15 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   # デバイス
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
   # 投稿
   has_many :pet_records, dependent: :destroy
   # いいね機能
   has_many :likes, dependent: :destroy
   has_many :like_pet_records, through: :likes, source: :pet_record
-
+  # コメント
+  has_many :record_comments, dependent: :destroy
+  has_many :comments, through: :record_comments, source: :pet_record
   # フォロー
   has_many :active_relationships, class_name: "UserRelationship", foreign_key: :followed_id
   has_many :followeds, through: :active_relationships, source: :follower
@@ -26,8 +27,6 @@ class User < ApplicationRecord
     validates :name
     validates :pet_name
   end
-
-
 
   # フォロー
   def followed_by?(user)

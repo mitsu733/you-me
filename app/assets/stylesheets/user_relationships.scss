@@ -2,32 +2,30 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+@import "mixin";
+@import "like_tag";
 
-  @import "variables";
-  @import "mixin";
-  @import "like_tag";
-
-.box{
-  .item-box{
-    .image-box{
-      .user-image{
+.box {
+  .item-box {
+    .image-box {
+      .user-image {
         object-fit: cover;
         @include circle;
-        border:{
-        @include main-border;
-        color: $main-color;
+        border: {
+          @include main-border;
+          color: $main-color;
         }
       }
     }
-    .items{
-      .follow-user-intoroduction{
+    .items {
+      .follow-user-intoroduction {
         padding: 10px;
         font-size: $small-font-size;
       }
-      .follow{
+      .follow {
         margin-top: 10px;
       }
     }
   }
 }
-

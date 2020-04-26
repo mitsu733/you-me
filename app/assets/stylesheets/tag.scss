@@ -2,17 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-  @import "variables";
-  @import "mixin";
+@import "variables";
+@import "mixin";
 
-.tag-box{
-	width: 80%;
-	text-align: left;
-	margin: 0 auto;
-	font-size: $big-font-size;
-	color: $tag-color;
+.tag-box {
+  width: 80%;
+  text-align: left;
+  margin: 0 auto;
+  font-size: $big-font-size;
+  color: $tag-color;
 }
 
-
 @import "like_tag";
-

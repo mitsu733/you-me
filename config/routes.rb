@@ -18,10 +18,12 @@ Rails.application.routes.draw do
 
   get '/infinite_scrolling', to: "pet_records#infinite_scrolling"
   get '/likes', to: 'likes#index',as: 'likes'
+  get '/record_comments', to: 'record_comments#index',as: 'comments'
   get 'pet_records/tag', to: 'pet_records#tag',as: 'tag'
   resources :pet_records do
     resource :likes, only: [:create, :destroy]
   end
+  resources :record_comments, only: [:create, :destroy]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

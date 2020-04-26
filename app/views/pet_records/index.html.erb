@@ -1,19 +1,17 @@
 <% if user_signed_in? == false %>
   <div class="about">
-    <%= link_to "アバウト『YOU □ ME』", about_path %>
+      <%= link_to "アバウト『YOU □ ME』", about_path %>
   </div>
   <div class="enter">
-    <%= link_to "サインイン", new_user_registration_path %>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to "ホーム", root_path %>
+      <%= link_to "サインイン", new_user_registration_path %>
+      <%= link_to "ログイン", new_user_session_path %>
+      <%= link_to "ホーム", root_path %>
   </div>
 <% end %>
-
 <div class="record-box" data-page="2">
-  <div>
-    <%= render "pet_records/index", pet_records: @pet_records %>
-  </div>
+    <div>
+        <%= render "pet_records/index", pet_records: @pet_records %>
+    </div>
     <span class="loader-container d-none"></span>
 </div>
-
- <%= javascript_include_tag 'scrolling.js' %>
+<%= javascript_include_tag 'scrolling.js' %>

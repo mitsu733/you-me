@@ -5,38 +5,37 @@
 @import "variables";
 @import "mixin";
 
-
-.simple-calendar{
+.simple-calendar {
   width: 100%;
   .calendar-heading {
     width: 80%;
     padding: 10px;
     margin: $margin-center;
     text-align: center;
-    .calendar-title{
+    .calendar-title {
       padding: 30px;
       font-size: $big-font-size;
       color: $font-color;
     }
   }
-  table{
+  table {
     border-color: $main-color;
     margin: $margin-center;
-    font:{
+    font: {
       size: 20px;
     }
-    tr{
+    tr {
       .week {
         text-align: center;
         padding: 10px 20px;
       }
     }
-    .day{
+    .day {
       width: 600px;
       height: 100px;
-      td{
-        .calendar-record{
-          a{
+      td {
+        .calendar-record {
+          a {
             font-size: 10px;
           }
         }

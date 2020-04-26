@@ -14,11 +14,11 @@
  *= require simple_calendar
  *= require_self
  */
-  @import "bootstrap-sprockets";
-  @import "bootstrap";
-  
-  @import "variables";
-  @import "mixin";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+@import "variables";
+@import "mixin";
 
 * {
   margin: 0;
@@ -32,55 +32,56 @@ a {
   color: $font-sub-color;
 }
 
-header{
+header {
   height: 100px;
   background-color: $main-color;
   margin-bottom: 30px;
   color: $font-color;
   overflow: scroll;
-  nav{
+  nav {
     display: flex;
-    .title{
+    .title {
       width: 200px;
       padding: 10px;
-      h1{
+      h1 {
         font-size: 30px;
         margin: 0;
         text-align: center;
         padding-top: 10px;
       }
-      h5{
+      h5 {
         text-align: center;
         margin: 0 auto;
       }
     }
-    ul{
+    ul {
       text-align: center;
       margin: 0 auto;
       width: 60%;
-      li{
+      li {
         list-style: none;
         display: inline-block;
         margin: 20px 20px 0 20px;
       }
     }
-    .input-group{
+    .input-group {
       margin: 50px 0 0 10px;
       width: 80%;
-      .form-control{
+      .form-control {
         margin: 0;
         border-color: $font-sub-color;
         color: $font-sub-color;
       }
-      .input-group-btn{
+      .input-group-btn {
         padding: 0;
         margin: 0;
-        .search{
+        .search {
           margin: 0;
           background-color: $font-sub-color;
           color: #fff;
           border-color: $font-sub-color;
-          &:hover, &:focus {
+          &:hover,
+          &:focus {
             color: $main-color;
             background-color: #fff;
           }
@@ -89,4 +90,3 @@ header{
     }
   }
 }
-

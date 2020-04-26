@@ -1,32 +1,38 @@
 <% if user_signed_in? %>
   <div class="enter-box">
-    <div class="img-box">
-      <div class="top-font">
-        <p class = "description-in">  あなたの大切なこのきろくを残しましょう。</p>
-        <p class ="about" >
-          <%= link_to "アバウト『YOU □ ME』", about_path %>
-        </p>
-    </div>
+      <div class="img-box">
+          <div class="top-font">
+              <p class="description-in"> あなたの大切なこのきろくを残しましょう。</p>
+              <p class="about">
+                  <%= link_to "アバウト『YOU □ ME』", about_path %>
+              </p>
+          </div>
+      </div>
   </div>
-</div>
 <% else %>
   <div class="enter-box">
-    <div class="img-box">
-      <div class="top-font">
-        <p class ="title">
-          YOU □ ME</p>
-        <p class = "description">
-          あなたとわたしのきろくのおきば
-      </p>
-        <p class ="about" >
-          <%= link_to "アバウト『YOU □ ME』", about_path %>
-        </p>
+      <div class="img-box">
+          <div class="top-font">
+              <p class="title">
+                  YOU □ ME</p>
+              <p class="description">
+                  あなたとわたしのきろくのおきば
+              </p>
+              <p class="about">
+                  <%= link_to "アバウト『YOU □ ME』", about_path %>
+              </p>
+          </div>
       </div>
-    </div>
-    <div class="enter-item">
-      <p><%= link_to "サインイン", new_user_registration_path %></p>
-      <p><%= link_to "ログイン", new_user_session_path %></p>
-      <p><%= link_to_unless_current  "公開されているきろく",  pet_records_path %></p>
-    </div>
+      <div class="enter-item">
+          <p>
+              <%= link_to "サインイン", new_user_registration_path %>
+          </p>
+          <p>
+              <%= link_to "ログイン", new_user_session_path %>
+          </p>
+          <p>
+              <%= link_to_unless_current  "公開されているきろく",  pet_records_path %>
+          </p>
+      </div>
   </div>
 <% end %>

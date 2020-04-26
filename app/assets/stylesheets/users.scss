@@ -2,14 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-  @import "variables";
-  @import "mixin";
+@import "variables";
+@import "mixin";
 
-.container{
-  .user{
+/*showの部分*/
+.container {
+  .user {
     margin: 10px;
     padding: 20px;
-    border:{
+    border: {
       @include main-border;
       color: $main-color;
     }
@@ -18,19 +19,18 @@
     justify-content: space-between;
     align-content: space-around;
 
-
-    .image-public{
+    .image-public {
       width: 180px;
       height: auto;
       margin: 10px;
       text-align: center;
-      .public{
+      .public {
         font-size: $small-font-size;
         margin: 10px;
         text-align: center;
         color: $font-color;
       }
-      .image{
+      .image {
         @include circle;
         width: 180px;
         height: 180px;
@@ -39,58 +39,57 @@
         margin: $margin-center;
         text-align: center;
       }
-      .edit{
+      .edit {
         padding: 10px;
         margin: $margin-center;
         text-align: center;
       }
     }
 
-    .user-status{
+    .user-status {
       width: 60%;
       margin: 10px;
-      .name-font{
+      .name-font {
         font-size: $big-font-size;
         padding: 10px 0;
-        span{
+        span {
           font-size: $base-font-size;
         }
       }
-      .intoroduction-font{
+      .intoroduction-font {
         min-width: 80px;
         white-space: pre-line;
       }
 
-      .follow-font{
+      .follow-font, .like, .comment {
         margin-top: 50px;
-        text-align: center;
-
+        text-align: left;
       }
     }
   }
 
-  .record{
-    .col-lg-10{
-      span{
+  .record {
+    .col-lg-10 {
+      span {
       }
     }
   }
 
-  .col-lg-2{
-  	.date{
-  		margin: 45px 0 0 0;
-	    table{
-	      tr{
-	        td{
-	        }
-	      }
-	    }
-	  }
+  .col-lg-2 {
+    .date {
+      margin: 45px 0 0 0;
+      table {
+        tr {
+          td {
+          }
+        }
+      }
+    }
   }
 }
 
 /*edit部分*/
-.user-edit{
+.user-edit {
   width: 90%;
   margin: $margin-center;
   .user-edit-title {
@@ -101,37 +100,39 @@
     font-size: $big-font-size;
     color: $font-sub-color;
   }
-  table{
+  table {
     margin: $margin-center;
     text-align: center;
-    font:{
+    font: {
       size: 20px;
     }
-    tr{
+    tr {
       width: 600px;
-      th ,td {
+      th,
+      td {
         padding: 10px 20px;
       }
     }
-    .img{
+    .img {
       margin: $margin-center;
       text-align: center;
       padding: 20px 0;
     }
-    .user-name, .pet-name{
+    .user-name,
+    .pet-name {
       font-size: $small-font-size;
       border-color: $main-color;
     }
-    .user-intoroduction{
+    .user-intoroduction {
       width: 100%;
       height: 150px;
       margin-bottom: 10px;
-      border:{
+      border: {
         @include main-border;
         color: $main-color;
       }
     }
-    .status-radio-button{
+    .status-radio-button {
       width: 80%;
       margin: $margin-center;
       text-align: center;

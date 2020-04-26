@@ -1,0 +1,31 @@
+<% if(record.user.user_status == "公開")&&(record.record_public == true)%>
+  <div class="item-box">
+      <div class="image-box">
+          <%= attachment_image_tag record, :record_image, size: "100x100", class: "image" %>
+      </div>
+      <div class="items">
+          <%= link_to(pet_record_path(record)) do %>
+          <span class="name">
+              ひとのなまえ：
+              <%= record.user.name %> <br>
+              どうぶつのなまえ：
+              <%= record.user.pet_name %>
+          </span>
+          <p class="like-tag-date">
+              <%= l(record.created_at.to_date) %>
+          </p>
+          <span class="like-tag-body">
+              <%= truncate tag_word(record), length: 40 %>
+          </span>
+          <% end %>
+          <!-- タグ機能 -->
+          <div class="tag">
+              <%= render "pet_records/tag", record: record %>
+          </div>
+      </div>
+      <!-- いいね機能 -->
+      <div id="likes_buttons_<%= record.id %>">
+          <%= render 'likes/like', pet_record: record %>
+      </div>
+  </div>
+<% end %>

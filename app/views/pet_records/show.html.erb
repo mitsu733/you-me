@@ -1,23 +1,29 @@
 <div class="show-record-box">
     <table class="record-table">
-    	<tr>
-        	<td class="date-box">
+        <tr>
+            <td class="date-box">
                 <h3>
-                <%= l(@pet_record.created_at.to_date) %>
+                    <%= l(@pet_record.created_at.to_date) %>
                 </h3>
             </td>
         </tr>
         <tr>
             <td class="name-box">
-                <span>ひとのなまえ：</span><%= @pet_record.user.name %>/<span>どうぶつのなまえ：</span><%= @pet_record.user.pet_name %>
+                <span>ひとのなまえ：</span>
+                <%= @pet_record.user.name %>/<span>どうぶつのなまえ：</span>
+                <%= @pet_record.user.pet_name %>
             </td>
         </tr>
         <tr>
-            <td class="pet-status", style="line-height: 2em">
-                トイレ：<%= @pet_record.toilet %> / 
-                お水：<%= @pet_record.water %> / 
-                ごはん：<%= @pet_record.food %> / 
-                元気：<%= @pet_record.energy %>
+            <td class="pet-status" , style="line-height: 2em">
+                トイレ：
+                <%= @pet_record.toilet %> /
+                お水：
+                <%= @pet_record.water %> /
+                ごはん：
+                <%= @pet_record.food %> /
+                元気：
+                <%= @pet_record.energy %>
             </td>
         </tr>
         <tr>
@@ -25,56 +31,95 @@
                 <%= attachment_image_tag @pet_record, :record_image, class: "img" %>
             </td>
         </tr>
-
         <% if @pet_record.record_public == false %>
-          <tr>
-            <td class="record_public">＊この記事は非公開です。＊</td>
-          </tr>
+            <tr>
+                <td class="record_public">＊この記事は非公開です。＊</td>
+            </tr>
         <% end %>
-
         <tr>
             <td class="body-box">
                 <p class="show-body">
-                <%= @pet_record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, "") %>
+                    <%= tag_word(@pet_record) %>
                 </p>
             </td>
         </tr>
-
         <!-- タグ機能 -->
-          <tr>
+        <tr>
             <td class="tag">
                 <%= render "pet_records/tag", record: @pet_record %>
             </td>
-          </tr>
+        </tr>
         <tr>
             <% if user_signed_in? %>
-              <td class="like">
-              <!-- いいね機能 -->
-                <span id="likes_buttons_<%= @pet_record.id %>">
-                    <%= render 'likes/like', pet_record: @pet_record %>
-                </span>
-              </td>
+                <td class="like">
+                    <!-- いいね機能 -->
+                    <span id="likes_buttons_<%= @pet_record.id %>">
+                        <%= render 'likes/like', pet_record: @pet_record %>
+                    </span>
+                </td>
             <% end %>
         </tr>
         <% if @like_users.empty? == false %>
-          <tr>
-              <td>
-                  <p class="liked-user">  この記録に灯をともしたユーザー</p>
-                  <% @like_users.each do | like | %>
-                  <% if like.user_status == "公開" %>
-                  <%= link_to user_path(like) do %>
-                    <%= attachment_image_tag like, :profile_image, size: "50x50", fallback: "no-image.jpg", class: "image" %>
+            <tr>
+                <td>
+                    <p class="liked-user"> この記録に灯をともしたユーザー</p>
+                    <% @like_users.each do | like | %>
+                        <% if like.user_status == "公開" %>
+                            <%= link_to user_path(like) do %>
+                                <%= attachment_image_tag like, :profile_image, size: "50x50", fallback: "no-image.jpg", class: "image" %>
+                            <% end %>
+                        <% end %>
                     <% end %>
-                    <% end %>
-                  <% end %>
-              </td>
-          </tr>
+                </td>
+            </tr>
         <% end %>
+        <tr>
+            <td class = "comment-show">
+                <p class = "comment-title1">コメント</p>
+                <% @pet_record.record_comments.each do | c | %>
+                <% if c.user.user_status == "公開" %>
+                <%= attachment_image_tag c.user, :profile_image, size: "10x10", fallback: "no-image.jpg", class: "image" %>
+                <%= c.comment %>  
+                <% if(c.user_id == current_user.id)%>
+                <%= link_to "コメントの削除", c, method: :delete, "data-confirm" => "本当に削除しますか？"  %><br><br>
+                <% end %>
+                    <% end %>
+                <% end %>
+            </td>
+        </tr>
+        <tr>
+            <td class = "comment-new">
+                <p cless = "comment-title2">コメント（100文字まで）</p>
+                <%= form_with model: @record_comment, local: true do |comment| %>
+                    <% if @record_comment.errors.any? %>
+                    <p>入力した内容にエラーが
+                        <%= @record_comment.errors.count %>件あります</p>
+                    <div class="alert alert-danger">
+                        <ul>
+                        <% @record_comment.errors.full_messages.each do |message| %>
+                            <li>
+                                <%= message %>
+                            </li>
+                        <% end %>
+                        </ul>
+                    </div>
+                    <% end %>
+                    <% if current_user.user_status == "公開" %>
+                        <%= comment.text_area :comment, class: "comment-text", placeholder: "コメント（100文字）" %>
+                        <%= comment.hidden_field :pet_record_id, value: @pet_record.id %>
+                        <%= comment.submit "送信する", class: "comment-text" %>
+                    <% else %>
+                        <p class="private-comment">※　プロフィールが非公開の場合コメントはできません　※
+                        </p>
+                    <% end %>
+                <% end %>
+            </td>
+        </tr>
         <tr>
             <td>
                 <% if user_signed_in? %>
                     <% if(@pet_record.user_id == current_user.id)%>
-                        <%= link_to "きろくの編集", edit_pet_record_path(@pet_record) %> / 
+                        <%= link_to "きろくの編集", edit_pet_record_path(@pet_record) %> /
                         <%= link_to "きろくの削除", @pet_record, method: :delete, "data-confirm" => "本当に削除しますか？"  %>
                     <% end %>
                 <% end %>
@@ -82,9 +127,9 @@
         </tr>
         <tr>
             <td class="link">
-                <%= link_to_unless_current  "このきろくの投稿者のページ",  user_path(@pet_record.user.id) %> | <%= link_to_unless_current  "公開されているきろく",  pet_records_path %>
+                <%= link_to_unless_current  "このきろくの投稿者のページ",  user_path(@pet_record.user.id) %> |
+                <%= link_to_unless_current  "公開されているきろく",  pet_records_path %>
             </td>
         </tr>
-
     </table>
 </div>

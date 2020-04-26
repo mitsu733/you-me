@@ -1,8 +1,8 @@
 <div class="box">
-  <div class="tag-box">
-	＃<%= @tag.tag %>
-  </div>
-	<% @tag_pet_records.each do |tag| %>
-		<%= render 'likes/like-tag', record: tag.pet_record %>
-	<% end %>
+    <div class="tag-box">
+      ＃<%= @tag.tag %>
+    </div>
+    <% @tag_pet_records.each do |tag| %>
+      <%= render 'likes/like-tag-comme', record: tag.pet_record %>
+    <% end %>
 </div>

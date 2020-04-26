@@ -1,81 +1,93 @@
 <div class="container">
-	<div class="row user">
-		<div class="image-public">
-			<p class="public">
-				<% if @user.user_status == "非公開" %>
-					プロフィール非公開<br>（記録の公開なし）
-				<% end %>
-			</p>
-			<%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100", fallback: "no-image.jpg", class: "image" %>
-			<%if @user.id == current_user.id %>
-				<%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x edit"></i><% end %>
-			<% end %>
-		</div>
-		<div class="user-status">
-			<p class="name-font">
-	        	<span>ひとのなまえ：</span>
-	        	<%= @user.name %> /
-	        	<span>
-	            どうぶつのなまえ：
-	        	</span>
-	            <%= @user.pet_name %>
-			</p>
-			<p class="intoroduction-font" >
-				<%= @user.intoroduction %>
-			</p>
-			 <!-- フォロー機能 -->
-			<p><%= render 'users/follow', user: @user %></p>
+    <div class="row user">
+        <div class="image-public">
+            <p class="public">
+                <% if @user.user_status == "非公開" %>
+                    プロフィール<br>
+                    記録<br>
+                    コメント<br>
+                    ※ 非公開 ※
+                <% end %>
+            </p>
+            <%= attachment_image_tag @user, :profile_image, fallback: "no-image.jpg", size: "100x100", fallback: "no-image.jpg", class: "image" %>
+            <%if @user.id == current_user.id %>
+                <%= link_to edit_user_path do %><i class="fas fa-cog gear fa-2x edit"></i>
+                <% end %>
+            <% end %>
+        </div>
+        <div class="user-status">
+            <p class="name-font">
+                <span>ひとのなまえ：</span>
+                    <%= @user.name %> /
+                <span>
+                    どうぶつのなまえ：
+                </span>
+                <%= @user.pet_name %>
+            </p>
+            <p class="intoroduction-font">
+                <%= @user.intoroduction %>
+            </p>
+            <p class="follow-font like comment">
+                <%= link_to_unless_current  "ともした灯：#{ @user.likes.count} ", likes_path, class: "btn btn-default"  %>
 
-			<p class="follow-font">
-			<%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user.id),  class: "btn btn-default" %>
-			<%= link_to "フォロー：#{ @user.followeds.count }", followed_user_path(@user.id),  class: "btn btn-default" %>
-			</p>
-			<%= @user_continue %>
-		</div>
-	</div>
+                <% if @user.user_status == "公開" %>
+                <%= link_to_unless_current  "コメント：#{ @user.record_comments.count} ", comments_path, class: "btn btn-default"  %>
+                <% end %>
 
-	<div class="row record">
-		<% if @user.id == current_user.id %>
-			<!-- カレンダー ※current userの場合表示-->
-			<div class="col-lg-10">
-				<%= month_calendar(attribute: :created_at,events: @pet_records)do |date, records| %>
-			  		<%= I18n.l(date, format: :short) %>
-				 	 	<% records.each do |record| %>
-						    <span class="calendar-record">
-						    	<%= link_to pet_record_path(record) do %>
-						      		<p><%= record.energy %>： <%= truncate(record.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 8) %>
-						      		</p>
-						      	<% end %>
-						    </span>
-					  	<% end %>
-				<% end %>
-			</div>
 
-		<% else %>
-			<!-- 記録一覧部分 -->
-			<div class="col-lg-10">
-				<div class="record-box"  data-page="2">
-					<div>
-						<% @pet_records.each do |record| %>
-							<%= render "pet_records/record-parts", record: record %>
-						<% end %>
-					</div>
-				</div>
-			</div>
-		<% end %>
-
-		<div class="col-lg-2">
-          <div class="date">
-			<% @pet_records.each do |record| %>
-				<%= link_to(pet_record_path(record)) do %>
-					<table>
-						<tr>
-							<td><%= l(record.created_at.to_date) %></td>
-						</tr>
-					</table>
-				<% end %>
-			<% end %>
-		</div>
-		</div>
-	</div>
+            <!-- フォロー機能 -->
+                <%= link_to "フォロワー：#{ @user.followers.count }", follower_user_path(@user.id),  class: "btn btn-default" %>
+                <%= link_to "フォロー：#{ @user.followeds.count }", followed_user_path(@user.id),  class: "btn btn-default" %>
+            </p>
+            <%= @user_continue %>
+        </div>
+    </div>
+    <div class="row record">
+        <% if @user.id == current_user.id %>
+        <!-- カレンダー ※current userの場合表示-->
+            <div class="col-lg-10">
+                <%= month_calendar(attribute: :created_at,events: @pet_records)do |date, records| %>
+                    <%= I18n.l(date, format: :short) %>
+                    <% records.each do |record| %>
+                        <span class="calendar-record">
+                            <%= link_to pet_record_path(record) do %>
+                            <p>
+                                <%= record.energy %>：
+                                <%= truncate tag_word(record), length: 8 %>
+                            </p>
+                            <% end %>
+                        </span>
+                    <% end %>
+                <% end %>
+            </div>
+        <% else %>
+        <!-- 記録一覧部分 -->
+            <div class="col-lg-10">
+                <div class="record-box" data-page="2">
+                    <div>
+                        <% @pet_records.each do |record| %>
+                            <% if(@user.user_status == "公開")&&(record.record_public == true)%>
+                                <%= render "pet_records/record-parts", record: record %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        <div class="col-lg-2">
+            <div class="date">
+                <% @pet_records.each do |record| %>
+                    <%= link_to(pet_record_path(record)) do %>
+                        <table>
+                            <tr>
+                                <td>
+                                    <%= l(record.created_at.to_date) %>
+                                </td>
+                            </tr>
+                        </table>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
 </div>

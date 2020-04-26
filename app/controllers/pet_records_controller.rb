@@ -20,6 +20,7 @@ class PetRecordsController < ApplicationController
   end
 
   def show
+    @record_comment = RecordComment.new
     pet_record = PetRecord.find(params[:id])
     if pet_record.user.user_status == "公開" && pet_record.record_public == true || pet_record.user_id == current_user.id
       @pet_record = pet_record

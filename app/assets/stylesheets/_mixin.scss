@@ -7,31 +7,31 @@
 }
 
 /*線の設定*/
-@mixin main-border{
+@mixin main-border {
   style: solid;
   width: 2px;
 }
-@mixin slim-dashed{
+@mixin slim-dashed {
   style: dashed;
   width: 1px;
 }
-@mixin slim-solid{
+@mixin slim-solid {
   style: solid;
   width: 1px;
 }
 
 /*ホバー時の設定*/
-@mixin transition{
+@mixin transition {
   -webkit-transition: 0.8s;
   -moz-transition: 0.8s;
   -o-transition: 0.8s;
   -ms-transition: 0.8s;
   transition: 0.8s;
-  }
+}
 
-  /*ラジオボタン */
-  @mixin radio-before {
-  content: '';
+/*ラジオボタン */
+@mixin radio-before {
+  content: "";
   display: inline-block;
   border-radius: 50%;
   border: 2px solid $font-sub-color;
@@ -40,7 +40,7 @@
   position: absolute;
 }
 @mixin radio-after {
-  content: '';
+  content: "";
   display: inline-block;
   border-radius: 50%;
   border: 7px solid $main-color;

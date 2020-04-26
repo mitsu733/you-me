@@ -2,18 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+@import "mixin";
 
-  @import "variables";
-  @import "mixin";
-
-.box{
+.box {
   width: 90%;
   margin: $margin-center;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  align-items:flex-start;
-  .item-box{
+  align-items: flex-start;
+  .item-box {
     width: 40%;
     height: 200px;
     margin: 20px;
@@ -24,69 +23,69 @@
     flex-wrap: nowrap;
     justify-content: space-around;
     overflow: scroll;
-    border:{
+    border: {
       @include main-border;
       color: $main-color;
     }
     @include transition;
-      &:hover, &:focus {
-        border: none;
-        box-shadow: $box-shadow;
-        background: $user-color;
-        .items{
-          a {
-            color: $main-color;
-          }
-        }
-        .tag{
-          a{
-            color: $tag-color;
-          }
+    &:hover,
+    &:focus {
+      border: none;
+      box-shadow: $box-shadow;
+      background: $user-color;
+      .items {
+        a {
+          color: $main-color;
         }
       }
-    word-wrap:break-word;
-    .image-box{
-      width: 100px;
-      height: 100px;
-      .image{
-        object-fit: cover;
-        border:{
-        radius: $record;
-        @include main-border;
-        color: $main-color;
+      .tag {
+        a {
+          color: $tag-color;
         }
       }
     }
-    .items{
+    word-wrap: break-word;
+    .image-box {
+      width: 100px;
+      height: 100px;
+      .image {
+        object-fit: cover;
+        border: {
+          radius: $record;
+          @include main-border;
+          color: $main-color;
+        }
+      }
+    }
+    .items {
       width: 100%;
       height: auto;
       padding: 15px;
       box-sizing: border-box;
-      .name{
+      .name {
         font-size: $small-font-size;
         display: block;
-        border-bottom:{
+        border-bottom: {
           @include slim-dashed;
           color: $font-sub-color;
         }
       }
-      .like-tag-date{
+      .like-tag-date {
         padding: 10px 0 0 0;
       }
-      .like-tag-body{
+      .like-tag-body {
         padding: 0;
         margin: 5px 0;
         font-size: $small-font-size;
         display: block;
       }
     }
-      .tag{
-        word-wrap:break-word;
-        a{
-          padding: 0 2px 0 0;
-          font-size: $small-font-size;
-        }
+    .tag {
+      word-wrap: break-word;
+      a {
+        padding: 0 2px 0 0;
+        font-size: $small-font-size;
       }
-   }
+    }
+  }
 }
-

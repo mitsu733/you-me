@@ -1,56 +1,59 @@
 <div class="user-edit">
-	<%= form_with(model: @user, local: true) do |f| %>
-		<table>
-			<tr>
-				<td>
-					<%= f.attachment_field :profile_image, class: "img" %>
-				</td>
-			</tr>
-			<tr>
-				<td>
-				  	<%= f.label :"ひとのなまえ", class: "user-name" %>
-				    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-		  		</td>
-		  	</tr>
-		  	<tr>
-		  		<td>
-				  	<%= f.label :"どうぶつのなまえ",class: "pet-name" %>
-				    <%= f.text_field :pet_name, autofocus: true, autocomplete: "pet_name" %>
-				 </td>
-			</tr>
-			<tr>
-				<td>
-				    <%= f.text_area :intoroduction, class: "user-intoroduction" %>
-				</td>
-			</tr>
-			<tr>
-				<td class="status-radio-button">
-				  	<%= f.radio_button :user_status, "公開" %>
-					<%= f.label :user_status, "公開" %>
-					<%= f.radio_button :user_status, "非公開" %>
-					<%= f.label :user_status, "非公開" %>
-				</td>
-			</tr>
-			<tr>
-				<td><%= f.submit "更新", class: "btn btn-default user-btn" %></td>
-			</tr>
-		</table>
-	<%end%>
-
-<!-- デバイス部分の変更 -->
-	<table>
-		<tr>
-			<td>
-			<%= link_to 'メールアドレス・パスワードを変更する',edit_user_registration_path %>
-			</td>
-		</tr>
-		<tr>
-			<td>登録メールアドレス：<%= @user.email %></td>
-		</tr>
-		<tr>
-			<td>
-			<%= link_to "ユーザーを削除する", withdraw_path %>
-			</td>
-		</tr>
-	</table>
+    <%= form_with(model: @user, local: true) do |f| %>
+    <table>
+        <tr>
+            <td>
+                <%= f.attachment_field :profile_image, class: "img" %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.label :"ひとのなまえ", class: "user-name" %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.label :"どうぶつのなまえ",class: "pet-name" %>
+                <%= f.text_field :pet_name, autofocus: true, autocomplete: "pet_name" %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.text_area :intoroduction, class: "user-intoroduction" %>
+            </td>
+        </tr>
+        <tr>
+            <td class="status-radio-button">
+                <%= f.radio_button :user_status, "公開" %>
+                <%= f.label :user_status, "公開" %>
+                <%= f.radio_button :user_status, "非公開" %>
+                <%= f.label :user_status, "非公開" %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= f.submit "更新", class: "btn btn-default user-btn" %>
+            </td>
+        </tr>
+    </table>
+    <%end%>
+    <!-- デバイス部分の変更 -->
+    <table>
+        <tr>
+            <td>
+                <%= link_to 'メールアドレス・パスワードを変更する',edit_user_registration_path %>
+            </td>
+        </tr>
+        <tr>
+            <td>登録メールアドレス：
+                <%= @user.email %>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <%= link_to "ユーザーを削除する", withdraw_path %>
+            </td>
+        </tr>
+    </table>
 </div>

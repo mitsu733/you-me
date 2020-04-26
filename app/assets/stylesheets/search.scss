@@ -5,30 +5,30 @@
 @import "variables";
 @import "mixin";
 
-
-.search-box{
+.search-box {
   width: 90%;
   margin: $margin-center;
   text-align: center;
-  table{
+  table {
     margin: $margin-center;
     text-align: center;
-    tbody{
+    tbody {
       width: 100%;
-      tr{
+      tr {
         width: 100%;
-        th ,td {
-          border-bottom :{
+        th,
+        td {
+          border-bottom : {
             style: solid;
             width: 1px;
             color: $main-color;
           }
           text-align: center;
           padding: 30px 30px 0 0;
-          .img{
+          .img {
             @include circle;
             object-fit: cover;
-            border:{
+            border: {
               @include main-border;
               color: $main-color;
             }

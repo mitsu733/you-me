@@ -1,45 +1,58 @@
 <div class="search-box">
-	<table>
-		<tr>
-			<th></th>
-			<!-- ソート機能 -->
-			<th><%= sort_link(@search, :user_name, "ひとのなまえ") %></th>
-			<th><%= sort_link(@search, :user_pet_name, "どうぶつのなまえ") %></th>
-			<th><%= sort_link(@search, :user_intoroduction, "プロフィール") %></th>
-			<th><%= sort_link(@search, :body, "記録") %></th>
-			<th></th>
-			<th></th>
-		</tr>
-		<!-- 検索結果 -->
-		<% @words.each do |word| %>
-			<% if(word.user.user_status == "公開")&&(word.record_public == true)%>
-				<tr>
-					<td><%= attachment_image_tag word.user, :profile_image, size: "70x70", fallback: "no-image.jpg", class: "img" %></td>
-					<td>
-						<%= link_to(user_path(word.user)) do %>
-							<%= word.user.name %>
-						<% end %>
-					</td>
-					<td><%= word.user.pet_name %></td>
-					<td><%= truncate(word.user.intoroduction, length: 20) %></td>
-					<td>
-						<%=  link_to(pet_record_path(word)) do %>
-							<%= truncate(word.body.gsub(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/, ""), length: 20) %>
-						<% end %>
-					</td>
-						<!-- タグ機能 -->
-						<td>
-						<%= render "pet_records/tag", record: word %>
-					</td>
-
-					 <!-- フォロー機能 -->
-		            <td>
-		                <%= render 'users/follow', user: word.user %>
-		            </td>
-
-				</tr>
-			<% end %> <!-- if 公開 -->
-		<% end %> <!-- words.each -->
-	</table>
+    <table>
+        <tr>
+            <th></th>
+            <!-- ソート機能 -->
+            <th>
+                <%= sort_link(@search, :user_name, "ひとのなまえ") %>
+            </th>
+            <th>
+                <%= sort_link(@search, :user_pet_name, "どうぶつのなまえ") %>
+            </th>
+            <th>
+                <%= sort_link(@search, :user_intoroduction, "プロフィール") %>
+            </th>
+            <th>
+                <%= sort_link(@search, :body, "記録") %>
+            </th>
+            <th></th>
+            <th></th>
+        </tr>
+        <!-- 検索結果 -->
+        <% @words.each do |word| %>
+          <% if(word.user.user_status == "公開")&&(word.record_public == true)%>
+            <tr>
+                <td>
+                    <%= attachment_image_tag word.user, :profile_image, size: "70x70", fallback: "no-image.jpg", class: "img" %>
+                </td>
+                <td>
+                    <%= link_to(user_path(word.user)) do %>
+                    <%= word.user.name %>
+                    <% end %>
+                </td>
+                <td>
+                    <%= word.user.pet_name %>
+                </td>
+                <td>
+                    <%= truncate(word.user.intoroduction, length: 20) %>
+                </td>
+                <td>
+                    <%=  link_to(pet_record_path(word)) do %>
+                     <%= truncate tag_word(word), length: 20 %>
+                    <% end %>
+                </td>
+                <!-- タグ機能 -->
+                <td>
+                    <%= render "pet_records/tag", record: word %>
+                </td>
+                <!-- フォロー機能 -->
+                <td>
+                    <%= render 'users/follow', user: word.user %>
+                </td>
+            </tr>
+          <% end %>
+        <!-- if 公開 -->
+        <% end %>
+        <!-- words.each -->
+    </table>
 </div>
-
