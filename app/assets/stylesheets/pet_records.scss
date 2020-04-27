@@ -67,6 +67,11 @@
             color: $tag-color;
           }
         }
+        .like-comment {
+          .comment-count {
+            color: $main-color;
+          }
+        }
         .pet-status {
           color: $main-color;
         }
@@ -106,10 +111,14 @@
         }
       }
 
-      li {
+      .like-comment {
+        .comment-count{
+          color: $font-color;
+          text-align: left;
+          font-size: $small-font-size;
+        }
         .like {
           text-align: right;
-          margin: right;
           a {
             font-size: $small-font-size;
             color: $font-color;
@@ -126,7 +135,7 @@
       .pet-status {
         color: $font-color;
         text-align: center;
-        padding: 10px;
+        padding: 10px 0;
         font-size: $small-font-size;
       }
     }
@@ -403,6 +412,10 @@
     .liked-user {
       font-size: $small-font-size;
       color: $main-color;
+      border-bottom: {
+        @include slim-dashed;
+        color: $main-color;
+      }
     }
     .image {
       @include circle;
@@ -421,13 +434,56 @@
       .comment-title1{
         font-size: $base-font-size;
         color: $main-color;
+        border-bottom: {
+        @include slim-dashed;
+        color: $main-color;
+        }
+      }
+      .comment-box{
+        position: relative;
+        .image{
+          position: absolute;
+          top: 3px;
+          left: 0;
+        }
+        .comment-text-box{
+          width: 90%;
+          display: inline-block;
+          padding: 10px;
+          margin-left: 50px;
+          white-space: pre-line;
+        }
+        .comment-delete{
+          margin-bottom: 20px;
+          text-align: right;
+        }
       }
     }
     .comment-new {
-      .comment-title2 {
-        @extend .comment-title1;
+        font-size: $base-font-size;
+        color: $main-color;
+      .comment-form{
+        text-align: center;
+        .comment-text{
+          width: 100%;
+          height: 100px;
+          border-color: $main-color;
+          color: #000;
+        }
+        .comment-submit{
+          width: 200px;
+          border-color: $main-color;
+          background-color: $font-sub-color;
+          color: $sub-color;
+          &:hover,
+          &:focus {
+            border-color: $main-color;
+            background-color: $sub-color;
+            color: $font-sub-color;
+            }
+          }
+        }
       }
-    }
     .link {
       width: 90%;
       margin: $margin-center;

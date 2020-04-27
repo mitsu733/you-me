@@ -78,22 +78,31 @@
   .about-table {
     margin: $margin-center;
     width: 50%;
-    tr,
-    td {
-      line-height: 2em;
-      padding: 15px 0;
-      border-bottom: {
-        @include slim-dashed;
-        color: $main-color;
-      }
-      white-space: pre-wrap;
-      p {
-        color: $main-color;
-      }
+    .about-title{
+      padding: 50px;
     }
-    .about-title {
-      font-size: $big-font-size;
-      text-align: center;
+    tr{
+      td {
+        padding-bottom: 30px;
+        border-bottom: {
+          @include slim-dashed;
+          color: $main-color;
+        }
+        .about-text{
+          white-space: pre-line;
+          line-height: 2em;
+          width: 85%;
+          margin: 0 auto;
+        }
+        .about-sub-title {
+          color: $main-color;
+          display: block;
+        }
+      }
+      .about-title {
+        font-size: $big-font-size;
+        text-align: center;
+      }
     }
   }
   .enter-link {

@@ -24,11 +24,17 @@
     </ul>
     <ul>
         <li>
-        <%= record.record_comments.count %>件コメント
-        </li>
-        <!-- いいね機能 -->
-        <li id="likes_buttons_<%= record.id %>">
-            <%= render 'likes/like', pet_record: record %>
+            <div class="like-comment">
+            <!-- コメント機能 -->
+                <span class="comment-count">
+                <%= record.record_comments.count %>件コメント
+                </span>
+
+            <!-- いいね機能 -->
+                <span id="likes_buttons_<%= record.id %>">
+                    <%= render 'likes/like', pet_record: record %>
+                </span>
+            </div>
         </li>
         <!-- タグ機能 -->
         <li class="tag">

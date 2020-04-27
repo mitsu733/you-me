@@ -77,12 +77,18 @@
             <td class = "comment-show">
                 <p class = "comment-title1">コメント</p>
                 <% @pet_record.record_comments.each do | c | %>
-                <% if c.user.user_status == "公開" %>
-                <%= attachment_image_tag c.user, :profile_image, size: "10x10", fallback: "no-image.jpg", class: "image" %>
-                <%= c.comment %>  
-                <% if(c.user_id == current_user.id)%>
-                <%= link_to "コメントの削除", c, method: :delete, "data-confirm" => "本当に削除しますか？"  %><br><br>
-                <% end %>
+                    <% if c.user.user_status == "公開" %>
+                        <div class="comment-box">
+                            <%= attachment_image_tag c.user, :profile_image, size: "10x10", fallback: "no-image.jpg", class: "image" %>
+                            <div class="comment-text-box">
+                                <%= c.comment %>
+                            </div>
+                            <% if(c.user_id == current_user.id)%>
+                                <div class="comment-delete">
+                                    <%= link_to "コメントの削除", c, method: :delete, "data-confirm" => "本当に削除しますか？"  %>
+                                </div>
+                            <% end %>
+                        </div>
                     <% end %>
                 <% end %>
             </td>
@@ -90,7 +96,7 @@
         <tr>
             <td class = "comment-new">
                 <p cless = "comment-title2">コメント（100文字まで）</p>
-                <%= form_with model: @record_comment, local: true do |comment| %>
+                <%= form_with model: @record_comment, class: "comment-form", local: true do |comment| %>
                     <% if @record_comment.errors.any? %>
                     <p>入力した内容にエラーが
                         <%= @record_comment.errors.count %>件あります</p>
@@ -105,9 +111,9 @@
                     </div>
                     <% end %>
                     <% if current_user.user_status == "公開" %>
-                        <%= comment.text_area :comment, class: "comment-text", placeholder: "コメント（100文字）" %>
+                        <%= comment.text_area :comment, class: "comment-text" %>
                         <%= comment.hidden_field :pet_record_id, value: @pet_record.id %>
-                        <%= comment.submit "送信する", class: "comment-text" %>
+                        <%= comment.submit "送信する", class: "btn btn-default comment-submit" %>
                     <% else %>
                         <p class="private-comment">※　プロフィールが非公開の場合コメントはできません　※
                         </p>
